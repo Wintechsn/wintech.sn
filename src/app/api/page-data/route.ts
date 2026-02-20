@@ -2,24 +2,24 @@ import { NextResponse } from "next/server";
 
 const avatarList = [
   {
-    image: "/images/home/avatar_1.jpg",
-    title: "Sarah Johnson",
+    image: "/images/home/avatar_1.webp",
+    title: "Fabienne Sagna",
   },
   {
-    image: "/images/home/avatar_2.jpg",
-    title: "Olivia Miller",
+    image: "/images/home/avatar_2.webp",
+    title: "Yankhoba Mané",
   },
   {
-    image: "/images/home/avatar_3.jpg",
-    title: "Sophia Roberts",
+    image: "/images/home/avatar_3.webp",
+    title: "Annick",
   },
   {
-    image: "/images/home/avatar_4.jpg",
-    title: "Isabella Clark",
+    image: "/images/home/avatar_4.webp",
+    title: "Issa Ndiaye",
   },
   {
-    image: "/images/home/avatar_4.jpg",
-    title: "Isabella Clark",
+    image: "/images/home/avatar_5.webp",
+    title: "Carmen Thiam",
   },
 ];
 
