@@ -29,7 +29,7 @@ export default function RootLayout({
       className={`${interTight.variable} ${instrumentSerif.variable}`}
     >
       <link rel="icon" href="/favicon.ico" sizes="any" />
-      <body className="antialiased font-inter-tight">
+      <body className="antialiased font-inter-tight overflow-x-hidden min-w-0">
         <Providers>
           <Header />
           {children}

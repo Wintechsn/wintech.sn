@@ -201,11 +201,14 @@ layer(base);
 @layer utilities {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
     /* font-family: 'Inter Tight', sans-serif; */
     @apply dark:bg-dark_black;
   }
 
   body {
+    overflow-x: hidden;
+    max-width: 100vw;
   }
 
   * {
