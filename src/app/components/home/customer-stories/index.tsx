@@ -42,19 +42,19 @@ function CustomerStories() {
                   initial={{ x: -100, y: -100, opacity: 0 }}
                   animate={topLeftInView ? { x: 0, y: 0, opacity: 1 } : {}}
                   transition={{ duration: 0.8 }}
-                  className="p-8 gap-64 rounded-2xl flex flex-col relative bg-[url('/images/home/customerStories/customer_bg_img.jpg')] object-cover bg-center h-full w-full bg-cover bg-no-repeat"
+                  className="p-8 gap-64 rounded-2xl flex flex-col relative bg-[url('/images/home/customerStories/customer_bg_img.jpeg')] object-cover bg-center h-full w-full bg-cover bg-no-repeat"
                 >
                   <span className="text-white/60 uppercase text-sm font-medium">
                     Témoignages clients
                   </span>
                   <div className="flex flex-col gap-6">
-                    <h3 className="text-white">
-                      « L'expertise d'Awake a transformé ma vision en succès ! »
-                    </h3>
+                    <h4 className="text-white">
+                      « Merci beaucoup pour votre engagement. Cette nouvelle étape marque le début d'une aventure encore plus ambitieuse avec un site qui nous ressemble, enfin ! »
+                    </h4>
                     <div className="flex flex-col gap-1">
-                      <p className="text-white font-medium">Ananya Shah</p>
+                      <p className="text-white font-medium">Carmen Thiam</p>
                       <p className="text-white/60 text-sm font-medium">
-                        Fondatrice de Chipsland
+                        Fondatrice de CT-consulting
                       </p>
                     </div>
                   </div>
@@ -125,13 +125,13 @@ function CustomerStories() {
                     <span className="text-dark_black/60 dark:text-white/60 uppercase text-sm font-medium">
                       Témoignages clients
                     </span>
-                    <h2 className="text-2xl lg:text-5xl">
+                    <h2 className="text-2xl lg:text-5xl text-dark_black dark:text-white">
                       « L'agence Awake a donné vie à nos idées avec une créativité
                       et une précision exceptionnelles, au-delà de nos attentes. »
                     </h2>
                   </div>
                   <div className="flex flex-col gap-1">
-                    <p className="text-black">Lindor Ndiaye</p>
+                    <p className="text-dark_black dark:text-white">Lindor Ndiaye</p>
                     <p className="text-dark_black/60 dark:text-white/60 text-sm">
                       CEO de Wintech
                     </p>
