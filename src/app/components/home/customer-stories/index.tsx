@@ -95,11 +95,10 @@ function CustomerStories() {
                 >
                   <div className="flex flex-col gap-6">
                     <span className="text-white/60 uppercase text-sm font-medium">
-                      Témoignages clients
+                    Notre vision
                     </span>
                     <h3 className="text-white text-2xl">
-                      Leur créativité et leur souci du détail ont complètement
-                      transformé notre marque !
+                    Aider les porteurs de projet à se lancer grâce à des solutions sur mesure.
                     </h3>
                     <div>
                       <Image
@@ -123,11 +122,11 @@ function CustomerStories() {
                 >
                   <div className="flex flex-col gap-6">
                     <span className="text-dark_black/60 dark:text-white/60 uppercase text-sm font-medium">
-                      Témoignages clients
+                    Notre engagement
                     </span>
                     <h2 className="text-2xl lg:text-5xl text-dark_black dark:text-white">
-                      « L'agence Awake a donné vie à nos idées avec une créativité
-                      et une précision exceptionnelles, au-delà de nos attentes. »
+                      « Chez Wintech, nous créons plus qu’un site : un outil de croissance durable.
+                      Nos solutions headless allient rapidité, sécurité et évolutivité. »
                     </h2>
                   </div>
                   <div className="flex flex-col gap-1">
