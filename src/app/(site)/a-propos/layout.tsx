@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "À propos | Agence Awake",
+  title: "À propos | Agence Wintech",
   description: "Découvrez notre histoire, notre équipe et notre vision.",
 };
 

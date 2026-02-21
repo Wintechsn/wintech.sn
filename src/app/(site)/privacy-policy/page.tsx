@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 export const metadata: Metadata = {
-    title: "Politique de confidentialité | Agence Awake",
+    title: "Politique de confidentialité | Agence Wintech",
 };
 
 export default function Page() {

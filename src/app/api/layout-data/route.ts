@@ -55,10 +55,10 @@ const footerData = {
     contactDetails: {
         name:"Coordonnées",
         address: "81 Rivington Street London EC2A 3AY",
-        email: "hello@awake.agency",
+        email: "hello@wintech.com",
         phone: "0105 192 3556"
     },
-    copyright: "©2025 Awake. Tous droits réservés."
+    copyright: "©2025 Wintech. Tous droits réservés."
 };
 
 export const GET = async () => {

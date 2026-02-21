@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 export const metadata: Metadata = {
-    title: "Conditions générales | Agence Awake",
+    title: "Conditions générales | Agence Wintech",
 };
 
 export default function Page() {

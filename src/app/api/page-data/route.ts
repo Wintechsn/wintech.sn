@@ -233,7 +233,7 @@ const startupPlanList = [
 
 const faqList = [
   {
-    faq_que: "Quels services l'agence Awake propose-t-elle ?",
+    faq_que: "Quels services l'agence Wintech propose-t-elle ?",
     faq_ans:
       "Oui, nous assurons un accompagnement après lancement pour une mise en œuvre fluide et proposons des forfaits de maintenance pour les clients ayant besoin de mises à jour ou d'assistance technique régulières.",
   },
@@ -243,7 +243,7 @@ const faqList = [
       "Oui, nous assurons un accompagnement après lancement pour une mise en œuvre fluide et proposons des forfaits de maintenance pour les clients ayant besoin de mises à jour ou d'assistance technique régulières.",
   },
   {
-    faq_que: "Comment sont structurés les tarifs chez Awake Agency ?",
+    faq_que: "Comment sont structurés les tarifs chez Wintech ?",
     faq_ans:
       "Oui, nous assurons un accompagnement après lancement pour une mise en œuvre fluide et proposons des forfaits de maintenance pour les clients ayant besoin de mises à jour ou d'assistance technique régulières.",
   },

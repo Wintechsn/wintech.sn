@@ -5,7 +5,7 @@ import { PackageStructure } from '@/app/components/documentation/PackageStructur
 import { QuickStart } from '@/app/components/documentation/QuickStart'
 import { Metadata } from 'next'
 export const metadata: Metadata = {
-  title: 'Documentation | Agence Awake',
+  title: 'Documentation | Agence Wintech',
 }
 
 export default function Page() {

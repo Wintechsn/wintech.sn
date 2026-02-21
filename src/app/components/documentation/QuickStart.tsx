@@ -70,7 +70,7 @@ export const QuickStart = () => {
           <span className="dark:text-white">http://localhost:3000:</span>
         </p>
         <div className="py-4 px-3 rounded-md bg-black">
-          <p className="text-sm text-gray-400">{"> awake_project@1.0.0 dev"}</p>
+          <p className="text-sm text-gray-400">{"> wintech_project@1.0.0 dev"}</p>
           <p className="text-sm text-gray-400 mt-1">{"> next dev"}</p>
           <p className="text-sm text-gray-400 mt-6">{"-Next.js 16.1.6"}</p>
           <p className="text-sm text-gray-400 mt-1">

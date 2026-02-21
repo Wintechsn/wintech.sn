@@ -63,7 +63,7 @@ function HeroSection() {
                 />
               </h1>
               <motion.p {...bottomAnimation} className="max-w-38">
-                Chez Awake, nous aidons les jeunes pousses à relever les plus grands
+                Chez Wintech, nous aidons les jeunes pousses à relever les plus grands
                 défis avec des solutions sur mesure, en vous accompagnant de la stratégie
                 jusqu'à la réussite sur un marché concurrentiel.
               </motion.p>
