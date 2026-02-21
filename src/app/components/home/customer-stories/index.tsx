@@ -1,11 +1,36 @@
 "use client";
 import Image from "next/image";
 import { TextGenerateEffect } from "@/app/components/ui/text-generate-effect";
-import { motion, useInView } from "motion/react";
-import { useRef } from "react";
-import { Card, CardContent } from "@/components/ui/card";
+import { motion, useInView, AnimatePresence } from "motion/react";
+import { useRef, useState, useEffect } from "react";
+
+const TEMOIGNAGES = [
+  {
+    quote:
+      "« Merci beaucoup pour votre engagement. Cette nouvelle étape marque le début d'une aventure encore plus ambitieuse avec un site qui nous ressemble, enfin ! »",
+    name: "Carmen Thiam",
+    role: "Fondatrice de CT-consulting",
+    image: "/images/home/customerStories/customer_bg_img.jpeg",
+  },
+  {
+    quote:
+      "« Merci beaucoup pour votre engagement. Cette nouvelle étape marque le début d'une aventure encore plus ambitieuse avec un site qui nous ressemble, enfin ! »",
+    name: "Carmen Thiam",
+    role: "Fondatrice de CT-consulting",
+    image: "/images/home/customerStories/customer_bg_img.jpg",
+  },
+  {
+    quote:
+      "« Merci beaucoup pour votre engagement. Cette nouvelle étape marque le début d'une aventure encore plus ambitieuse avec un site qui nous ressemble, enfin ! »",
+    name: "Carmen Thiam",
+    role: "Fondatrice de CT-consulting",
+    image: "/images/home/customerStories/customer_bg_img.jpg",
+  },
+];
 
 function CustomerStories() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
   // Refs for each box
   const topLeftRef = useRef(null);
   const topRightRef = useRef(null);
@@ -17,6 +42,14 @@ function CustomerStories() {
   const topRightInView = useInView(topRightRef, { once: true });
   const bottomLeftInView = useInView(bottomLeftRef, { once: true });
   const bottomRightInView = useInView(bottomRightRef, { once: true });
+
+  // Auto-rotate témoignages avec fondu
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % TEMOIGNAGES.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section>
@@ -36,26 +69,57 @@ function CustomerStories() {
 
             <div className="flex flex-col gap-6">
               <div className="flex flex-col xl:flex xl:flex-row gap-6">
-                {/* Top Left Box */}
+                {/* Top Left Box - 3 témoignages en fondu */}
                 <motion.div
                   ref={topLeftRef}
                   initial={{ x: -100, y: -100, opacity: 0 }}
                   animate={topLeftInView ? { x: 0, y: 0, opacity: 1 } : {}}
                   transition={{ duration: 0.8 }}
-                  className="p-8 gap-64 rounded-2xl flex flex-col relative bg-[url('/images/home/customerStories/customer_bg_img.jpeg')] object-cover bg-center h-full w-full bg-cover bg-no-repeat"
+                  className="p-8 gap-64 rounded-2xl flex flex-col relative object-cover bg-center h-full w-full bg-cover bg-no-repeat overflow-hidden"
+                  style={{
+                    backgroundImage: `url(${TEMOIGNAGES[activeIndex].image})`,
+                  }}
                 >
                   <span className="text-white/60 uppercase text-sm font-medium">
                     Témoignages clients
                   </span>
                   <div className="flex flex-col gap-6">
-                    <h4 className="text-white">
-                      « Merci beaucoup pour votre engagement. Cette nouvelle étape marque le début d'une aventure encore plus ambitieuse avec un site qui nous ressemble, enfin ! »
-                    </h4>
-                    <div className="flex flex-col gap-1">
-                      <p className="text-white font-medium">Carmen Thiam</p>
-                      <p className="text-white/60 text-sm font-medium">
-                        Fondatrice de CT-consulting
-                      </p>
+                    <AnimatePresence mode="wait" initial={false}>
+                      <motion.div
+                        key={activeIndex}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.6 }}
+                        className="flex flex-col gap-6"
+                      >
+                        <h4 className="text-white">
+                          {TEMOIGNAGES[activeIndex].quote}
+                        </h4>
+                        <div className="flex flex-col gap-1">
+                          <p className="text-white font-medium">
+                            {TEMOIGNAGES[activeIndex].name}
+                          </p>
+                          <p className="text-white/60 text-sm font-medium">
+                            {TEMOIGNAGES[activeIndex].role}
+                          </p>
+                        </div>
+                      </motion.div>
+                    </AnimatePresence>
+                    <div className="flex justify-end gap-2">
+                      {TEMOIGNAGES.map((_, i) => (
+                        <button
+                          key={i}
+                          type="button"
+                          aria-label={`Témoignage ${i + 1}`}
+                          onClick={() => setActiveIndex(i)}
+                          className={`h-1.5 rounded-full transition-all duration-300 ${
+                            i === activeIndex
+                              ? "bg-white w-6"
+                              : "bg-white/40 w-1.5 hover:bg-white/60"
+                          }`}
+                        />
+                      ))}
                     </div>
                   </div>
                 </motion.div>
