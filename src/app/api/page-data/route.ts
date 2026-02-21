@@ -25,30 +25,47 @@ const avatarList = [
 
 const brandList = [
   {
-    image: "/images/home/brand/brand-icon-1.svg",
-    darkImg: "/images/home/brand/brand-darkicon-1.svg",
-    title: "Adobe",
+    image: "/images/home/brand/sonatel.png",
+    darkImg: "/images/home/brand/sonatel-black.png",
+    title: "Sonatel",
   },
   {
-    image: "/images/home/brand/brand-icon-2.svg",
-    darkImg: "/images/home/brand/brand-darkicon-2.svg",
-    title: "Figma",
+    image: "/images/home/brand/socodevi.png",
+    darkImg: "/images/home/brand/socodevi-black.png",
+    title: "Socodevi",
   },
   {
-    image: "/images/home/brand/brand-icon-3.svg",
-    darkImg: "/images/home/brand/brand-darkicon-3.svg",
-    title: "Shopify",
+    image: "/images/home/brand/odc.png",
+    darkImg: "/images/home/brand/odc-black.png",
+    title: "ODC",
   },
   {
-    image: "/images/home/brand/brand-icon-4.svg",
-    darkImg: "/images/home/brand/brand-darkicon-4.svg",
-    title: "Dribble",
+    image: "/images/home/brand/icf.png",
+    darkImg: "/images/home/brand/icf-black.png",
+    title: "ICF",
+  },
+
+  {
+    image: "/images/home/brand/soubatech.png",
+    darkImg: "/images/home/brand/soubatech-black.png",
+    title: "Soubatech",
   },
   {
-    image: "/images/home/brand/brand-icon-5.svg",
-    darkImg: "/images/home/brand/brand-darkicon-5.svg",
-    title: "Webflow",
+    image: "/images/home/brand/gsef.png",
+    darkImg: "/images/home/brand/gsef-black.png",
+    title: "GSEF",
   },
+  {
+    image: "/images/home/brand/sante.png",
+    darkImg: "/images/home/brand/sante-black.png",
+    title: "Ministère de la Santé",
+  },
+  {
+    image: "/images/home/brand/ct.png",
+    darkImg: "/images/home/brand/ct-black.png",
+    title: "CT-consulting",
+  },
+ 
 ];
 
 const innovationList = [
