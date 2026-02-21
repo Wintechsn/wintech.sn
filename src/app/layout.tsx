@@ -9,12 +9,14 @@ const instrumentSerif = Instrument_Serif({
   variable: "--font-instrument-serif",
   weight: ["400"],
   style: ["normal", "italic"],
+  display: "swap",
 });
 
 const interTight = Inter_Tight({
   subsets: ["latin"],
   variable: "--font-inter-tight",
   style: ["normal", "italic"],
+  display: "swap",
 });
 
 export default function RootLayout({

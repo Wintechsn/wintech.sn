@@ -2,17 +2,28 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import StarRating from "@/app/components/shared/star-rating";
 import { TextGenerateEffect } from "@/app/components/ui/text-generate-effect";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import SplashCursor from "@/app/components/ui/splash-cursor";
+
+const SplashCursor = dynamic(
+  () => import("@/app/components/ui/splash-cursor"),
+  { ssr: false }
+);
 
 function HeroSection() {
   const ref = useRef(null);
   const [avatarList, setAvatarList] = useState<any>(null);
+  const [showSplash, setShowSplash] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setShowSplash(true), 1200);
+    return () => clearTimeout(t);
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,19 +48,21 @@ function HeroSection() {
 
   return (
     <section ref={ref} className="relative">
-      <div className="absolute inset-0 -z-1 pointer-events-none">
-        <SplashCursor
-          SIM_RESOLUTION={128}
-          DYE_RESOLUTION={1440}
-          DENSITY_DISSIPATION={3.5}
-          VELOCITY_DISSIPATION={2}
-          PRESSURE={0.1}
-          CURL={3}
-          SPLAT_RADIUS={0.2}
-          SPLAT_FORCE={6000}
-          COLOR_UPDATE_SPEED={10}
-        />
-      </div>
+      {showSplash && (
+        <div className="absolute inset-0 -z-1 pointer-events-none">
+          <SplashCursor
+            SIM_RESOLUTION={64}
+            DYE_RESOLUTION={512}
+            DENSITY_DISSIPATION={3.5}
+            VELOCITY_DISSIPATION={2}
+            PRESSURE={0.1}
+            CURL={3}
+            SPLAT_RADIUS={0.2}
+            SPLAT_FORCE={6000}
+            COLOR_UPDATE_SPEED={10}
+          />
+        </div>
+      )}
       <div className="relative w-full pt-44 2xl:pb-20 pb-10 before:absolute before:w-full before:h-full before:bg-linear-to-r before:from-sky-100 before:via-white before:to-amber-100 before:rounded-full before:top-24 before:blur-3xl before:-z-10 dark:before:from-slate-800 dark:before:via-black dark:before:to-stone-700 dark:before:rounded-full dark:before:blur-3xl dark:before:-z-10">
         <div className="container relative z-10">
           <div className="flex flex-col max-w-5xl mx-auto gap-8">

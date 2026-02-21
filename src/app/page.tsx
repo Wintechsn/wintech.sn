@@ -1,14 +1,16 @@
 import { Metadata } from "next";
-import Blog from "./components/home/blog";
-import Brand from "./components/home/brand";
-import CreativeMind from "./components/home/creative-mind";
-import CustomerStories from "./components/home/customer-stories";
+import dynamic from "next/dynamic";
 import HeroSection from "./components/home/hero";
-import Innovation from "./components/home/innovation";
-import OnlinePresence from "./components/home/online-presence";
-import Solutions from "./components/home/solution";
-import Subscription from "./components/home/subscription";
-import WebResult from "./components/home/web-result";
+
+const Brand = dynamic(() => import("./components/home/brand"), { ssr: true });
+const WebResult = dynamic(() => import("./components/home/web-result"), { ssr: true });
+const Innovation = dynamic(() => import("./components/home/innovation"), { ssr: true });
+const OnlinePresence = dynamic(() => import("./components/home/online-presence"), { ssr: true });
+const CreativeMind = dynamic(() => import("./components/home/creative-mind"), { ssr: true });
+const CustomerStories = dynamic(() => import("./components/home/customer-stories"), { ssr: true });
+const Subscription = dynamic(() => import("./components/home/subscription"), { ssr: true });
+const Blog = dynamic(() => import("./components/home/blog"), { ssr: true });
+const Solutions = dynamic(() => import("./components/home/solution"), { ssr: true });
 
 export const metadata: Metadata = {
     title: "Agence Wintech",
