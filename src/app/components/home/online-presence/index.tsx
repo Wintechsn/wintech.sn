@@ -41,11 +41,11 @@ function OnlinePresence({ showTitle = true }: { showTitle?: boolean }) {
               <div className="max-w-2xl text-center">
                 <h2>
                   <TextGenerateEffect
-                    words="Comment nous avons transformé la"
+                    words="Découvrez comment nous transformons des projets en"
                     duration={0.5}
                   />
                   <TextGenerateEffect
-                    words="présence en ligne d'une petite entreprise"
+                    words="réussites digitales."
                     delay={1.2}
                     className="italic font-normal instrument-font"
                   />

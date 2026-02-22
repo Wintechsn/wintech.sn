@@ -70,7 +70,7 @@ function Innovation({ showTitle = true }: { showTitle?: boolean }) {
               {showTitle && (
                 <motion.div
                   {...bottomAnimation(1)}
-                  className="max-w-(--breakpoint-Xsm) text-center"
+                  className="max-w-(--breakpoint-sm) text-center"
                 >
                   <h2>
                     <TextGenerateEffect
@@ -78,7 +78,7 @@ function Innovation({ showTitle = true }: { showTitle?: boolean }) {
                       delay={0.4}
                     />
                     <TextGenerateEffect
-                      words="l'esthétique"
+                      words="la technologie"
                       delay={1}
                       className="font-instrument-serif italic font-normal"
                     />
@@ -150,8 +150,8 @@ function Innovation({ showTitle = true }: { showTitle?: boolean }) {
             </div>
             <div className="flex flex-col gap-4 xl:flex xl:flex-row bg-black items-center justify-between dark:bg-white/5 py-8 px-7 sm:px-12 rounded-3xl w-full">
               <h4 className="text-white text-center xl:text-left">
-                Découvrez notre travail en action.
-                <br /> Démarrez votre aventure créative avec nous !
+              Prêt à lancer votre projet digital ?
+                <br /> Construisons ensemble une solution performante et sur mesure.
               </h4>
               <div className="flex flex-col sm:flex-row gap-3 items-center">
                 <Button
@@ -160,7 +160,7 @@ function Innovation({ showTitle = true }: { showTitle?: boolean }) {
                   render={<Link href="/contact" />}
                 >
                   <span className="relative z-10 transition-all duration-500 text-black">
-                    Collaborons
+                  Parlons projet
                   </span>
                   <div className="absolute right-1 w-10 h-10 bg-black text-white rounded-full flex items-center justify-center transition-all duration-500 group-hover:right-[calc(100%-44px)] group-hover:rotate-45">
                     <ArrowUpRight size={16} />
@@ -173,7 +173,7 @@ function Innovation({ showTitle = true }: { showTitle?: boolean }) {
                   render={<Link href="/#work" />}
                 >
                   <span className="relative z-10 transition-all duration-500 text-white">
-                    Commencer
+                  Nos réalisations
                   </span>
                   <div className="absolute right-1 w-10 h-10 bg-white text-black rounded-full flex items-center justify-center transition-all duration-500 group-hover:right-[calc(100%-44px)] group-hover:rotate-45">
                     <ArrowUpRight size={16} />

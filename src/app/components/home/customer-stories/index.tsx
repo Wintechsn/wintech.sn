@@ -80,9 +80,26 @@ function CustomerStories() {
                     backgroundImage: `url(${TEMOIGNAGES[activeIndex].image})`,
                   }}
                 >
-                  <span className="text-white/60 uppercase text-sm font-medium">
-                    Témoignages clients
-                  </span>
+                  <div className="flex flex-row justify-between items-center w-full gap-4">
+                    <span className="text-white/60 uppercase text-sm font-medium shrink-0">
+                      Témoignages clients
+                    </span>
+                    <div className="flex gap-2 shrink-0">
+                      {TEMOIGNAGES.map((_, i) => (
+                        <button
+                          key={i}
+                          type="button"
+                          aria-label={`Témoignage ${i + 1}`}
+                          onClick={() => setActiveIndex(i)}
+                          className={`h-1.5 rounded-full transition-all duration-300 ${
+                            i === activeIndex
+                              ? "bg-white w-6"
+                              : "bg-white/40 w-1.5 hover:bg-white/60"
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  </div>
                   <div className="flex flex-col gap-6">
                     <AnimatePresence mode="wait" initial={false}>
                       <motion.div
@@ -106,21 +123,6 @@ function CustomerStories() {
                         </div>
                       </motion.div>
                     </AnimatePresence>
-                    <div className="flex justify-end gap-2">
-                      {TEMOIGNAGES.map((_, i) => (
-                        <button
-                          key={i}
-                          type="button"
-                          aria-label={`Témoignage ${i + 1}`}
-                          onClick={() => setActiveIndex(i)}
-                          className={`h-1.5 rounded-full transition-all duration-300 ${
-                            i === activeIndex
-                              ? "bg-white w-6"
-                              : "bg-white/40 w-1.5 hover:bg-white/60"
-                          }`}
-                        />
-                      ))}
-                    </div>
                   </div>
                 </motion.div>
 

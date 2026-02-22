@@ -71,31 +71,31 @@ const brandList = [
 const innovationList = [
   {
     icon: "SwatchBook",
-    title: "Stratégie\n de marque",
+    title: "Création de\n sites web",
     bg_color: "bg-purple-500/10",
     txt_color: "text-purple-500",
   },
   {
     icon: "Image",
-    title: "Marketing\n digital",
+    title: "Applications\n web",
     bg_color: "bg-sky-400/10",
     txt_color: "text-sky-400",
   },
   {
     icon: "WandSparkles",
-    title: "Design\n UI/UX",
+    title: "Applications\n mobiles",
     bg_color: "bg-orange-400/10",
     txt_color: "text-orange-400",
   },
   {
     icon: "BarChart3",
-    title: "Analyses &\n rapports",
+    title: "Branding &\n identité visuelle",
     bg_color: "bg-lime-400/10",
     txt_color: "text-lime-400",
   },
   {
     icon: "AppWindowMac",
-    title: "Développement\n web",
+    title: "SEO &\n Social Media",
     bg_color: "bg-red-500/10",
     txt_color: "text-red-500",
   },
@@ -233,7 +233,7 @@ const startupPlanList = [
 
 const faqList = [
   {
-    faq_que: "Quels services l'agence Wintech propose-t-elle ?",
+    faq_que: "Quels services l'agence Awake propose-t-elle ?",
     faq_ans:
       "Oui, nous assurons un accompagnement après lancement pour une mise en œuvre fluide et proposons des forfaits de maintenance pour les clients ayant besoin de mises à jour ou d'assistance technique régulières.",
   },

@@ -59,8 +59,7 @@ function WebResult() {
             <div className="flex flex-col items-center justify-center text-center gap-5">
               <h2 className="max-w-6xl">
                 <TextGenerateEffect
-                  words="Des stratégies exceptionnelles, éprouvées et axées sur la technologie
-                pour des résultats concrets avec"
+                  words="Des solutions digitales stratégiques, axées sur la performance pour des résultats concrets avec"
                   duration={0.2}
                 />
               </h2>

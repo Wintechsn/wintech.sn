@@ -68,18 +68,15 @@ function HeroSection() {
           <div className="flex flex-col max-w-5xl mx-auto gap-8">
             <div className="relative flex flex-col text-center items-center sm:gap-6 gap-4">
               <h1>
-                <TextGenerateEffect words="Construire des marques audacieuses avec" />
+                <TextGenerateEffect words="Agence web & digitale, créatrice de " />
                 <TextGenerateEffect
-                  words="un design réfléchi"
+                  words="solutions sur mesure."
                   delay={0.8}
                   className="font-instrument-serif italic tracking-tight"
                 />
               </h1>
               <motion.p {...bottomAnimation} className="max-w-38">
-                Chez Wintech, nous aidons les jeunes pousses à relever les plus grands
-                défis avec des solutions sur mesure, en vous accompagnant de la stratégie
-                jusqu'à la réussite sur un marché concurrentiel.
-              </motion.p>
+              Chez Wintech, nous concevons des solutions digitales performantes — sites web, applications et identités de marque — pensées pour structurer votre présence en ligne, renforcer votre crédibilité et accélérer durablement la croissance de votre entreprise.              </motion.p>
             </div>
             <motion.div
               {...bottomAnimation}
@@ -91,7 +88,7 @@ function HeroSection() {
                 render={<Link href="/contact" />}
               >
                 <span className="relative z-10 transition-all duration-500">
-                  Commencer
+                Parlons projet
                 </span>
                 <div className="absolute right-1 w-10 h-10 bg-background text-foreground rounded-full flex items-center justify-center transition-all duration-500 group-hover:right-[calc(100%-44px)] group-hover:rotate-45">
                   <ArrowUpRight size={16} />
