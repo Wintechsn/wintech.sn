@@ -10,11 +10,14 @@ export default function Page() {
                 className="relative w-full pt-44 2xl:pb-20 pb-10 before:absolute before:w-full before:h-full before:bg-linear-to-r before:from-blue_gradient before:via-white before:to-yellow_gradient before:rounded-full before:top-24 before:blur-3xl before:-z-10 dark:before:from-dark_blue_gradient dark:before:via-black dark:before:to-dark_yellow_gradient dark:before:rounded-full dark:before:blur-3xl dark:before:-z-10"
             >
                 <div className="container relative z-10">
-                    <div className='flex flex-col gap-5'>
-                        <h1 className='md:text-6xl text-4xl font-medium text-center'>
-                            Terms & Conditions
-                        </h1>
-                        <div className="bg-white dark:bg-dark_black p-8 rounded-2xl">
+                    <div className="flex flex-col max-w-5xl mx-auto gap-8">
+                        <div className="relative flex flex-col text-center items-center sm:gap-6 gap-4">
+                            <h1 className="font-medium w-full md:text-6xl text-4xl">
+                                Terms & Conditions
+                            </h1>
+                        </div>
+                    </div>
+                    <div className="bg-white dark:bg-dark_black p-8 rounded-2xl mt-10 max-w-5xl mx-auto">
                             <p>
                                 This Getnextjstemplates Terms of Service (“<span className="font-semibold">Agreement</span>”) is entered into by and between Getnextjstemplates (“<span className="font-semibold">Getnextjstemplates</span>”) and the entity or person placing an order for or accessing the Services (“<span className="font-semibold">Customer</span>”). This Agreement consists of the terms and conditions set forth below and any Order Form. The “<span className="font-semibold">Effective Date”</span> of this Agreement is the date which is the earlier of (a) Customer’s initial access to the Services through any online provisioning, registration or order process or (b) the Effective Date of the first Order Form. This Agreement will govern Customer’s initial purchase on the Effective Date as well as any future purchases made by Customer that reference this Agreement. Getnextjstemplates may modify this Agreement from time to time as permitted in Section 13.4 (Amendment).
                             </p>

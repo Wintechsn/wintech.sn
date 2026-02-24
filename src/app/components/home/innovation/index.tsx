@@ -170,7 +170,7 @@ function Innovation({ showTitle = true }: { showTitle?: boolean }) {
                 <Button
                   className="relative text-sm font-medium rounded-full h-12 p-1 ps-6 pe-14 group transition-all duration-500 hover:ps-14 hover:pe-6 w-fit overflow-hidden bg-transparent hover:bg-transparent border border-white"
                   nativeButton={false}
-                  render={<Link href="/#work" />}
+                  render={<Link href="/realisations" />}
                 >
                   <span className="relative z-10 transition-all duration-500 text-white">
                   Nos réalisations

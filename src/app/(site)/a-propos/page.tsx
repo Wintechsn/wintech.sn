@@ -1,28 +1,202 @@
 "use client";
 
+import Link from "next/link";
+import { useRef } from "react";
+import CountUp from "react-countup";
+import { motion, useInView } from "motion/react";
 import { TextGenerateEffect } from "@/app/components/ui/text-generate-effect";
-import CreativeMind from "@/app/components/home/creative-mind";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
+import { PlusIcon, ArrowUpRight } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+const FAQ_APROPOS = [
+  {
+    q: "Comment solliciter nos services chez Wintech ?",
+    a: "Vous pouvez nous contacter via le formulaire de contact, par email ou par téléphone. Nous étudions votre demande et vous recontactons pour un premier échange et un devis personnalisé.",
+  },
+  {
+    q: "En combien de temps un projet est-il livré ?",
+    a: "La durée varie selon la nature et l'envergure du projet (site vitrine, e-commerce, refonte…). Nous vous communiquons un planning réaliste dès l'analyse de vos besoins.",
+  },
+  {
+    q: "Proposez-vous des services de maintenance/support ?",
+    a: "Oui. Nous proposons des forfaits de maintenance et de support technique pour assurer la mise à jour, la sécurité et l'évolution de votre site dans le temps.",
+  },
+  {
+    q: "Est-ce que vous accompagnez les débutants ou les jeunes entreprises ?",
+    a: "Absolument. Nous accompagnons aussi bien les startups que les PME et les grandes structures. Nous adaptons nos solutions et notre accompagnement à votre niveau et à vos objectifs.",
+  },
+  {
+    q: "Quels sont les modes de paiement disponibles ?",
+    a: "Nous acceptons les virements bancaires et d'autres modes de paiement adaptés au contexte local. Les modalités sont précisées dans nos propositions commerciales.",
+  },
+];
 
 export default function AProposPage() {
+  const statsRef = useRef(null);
+  const statsInView = useInView(statsRef, { once: true });
+
+  const statsAnimation = (index: number) => ({
+    initial: { y: "25%", opacity: 0 },
+    animate: statsInView ? { y: 0, opacity: 1 } : { y: "25%", opacity: 0 },
+    transition: { duration: 0.4, delay: 0.2 + index * 0.15 },
+  });
+
   return (
     <main>
+      {/* Hero */}
       <section className="relative w-full pt-44 2xl:pb-20 pb-10 before:absolute before:w-full before:h-full before:bg-linear-to-r before:from-blue_gradient before:via-white before:to-yellow_gradient dark:before:from-dark_blue_gradient dark:before:via-black dark:before:to-dark_yellow_gradient dark:before:rounded-full dark:before:blur-3xl dark:before:-z-10 before:rounded-full before:top-24 before:blur-3xl before:-z-10">
         <div className="container relative z-10">
-          <div className="flex flex-col gap-10 md:gap-20">
-            <div className="relative flex flex-col text-center items-center">
-              <h2 className="font-medium w-full max-w-32">
-                <TextGenerateEffect words="À" duration={0.5} />
+          <div className="flex flex-col max-w-5xl mx-auto gap-8">
+            <div className="relative flex flex-col text-center items-center sm:gap-6 gap-4">
+              <h1 className="font-medium w-full">
+                <TextGenerateEffect words="Écrire et façonner votre" duration={0.5} />
                 <TextGenerateEffect
-                  words="propos"
-                  delay={1}
+                  words="succès digital"
+                  delay={0.8}
                   className="italic font-normal instrument-font"
                 />
-              </h2>
+              </h1>
             </div>
           </div>
         </div>
       </section>
-      <CreativeMind showTitle={false} />
+
+      {/* Chiffres clés */}
+      <section ref={statsRef}>
+        <div className="flex flex-col md:flex-row justify-center items-center text-center">
+          <motion.div
+            {...statsAnimation(0)}
+            className="relative 2xl:px-24 px-16 md:py-8 py-4"
+          >
+            <h2 className="2xl:text-9xl md:text-7xl text-5xl">
+              <sup>+</sup>
+              {statsInView ? (
+                <CountUp start={0} end={100} duration={3} />
+              ) : (
+                <span>0</span>
+              )}
+            </h2>
+            <p className="mt-2">Projets réalisés</p>
+            <div className="hidden md:block absolute right-0 top-1/2 transform -translate-y-1/2 h-28 w-px bg-border" />
+          </motion.div>
+          <motion.div
+            {...statsAnimation(1)}
+            className="relative 2xl:px-24 px-16 md:py-8 py-4"
+          >
+            <h2 className="2xl:text-9xl md:text-7xl text-5xl">
+              <sup>+</sup>
+              {statsInView ? (
+                <CountUp start={0} end={8} duration={3} />
+              ) : (
+                <span>0</span>
+              )}
+            </h2>
+            <p className="mt-2 text-muted-foreground">Années d&apos;expérience</p>
+            <div className="hidden md:block absolute right-0 top-1/2 transform -translate-y-1/2 h-28 w-px bg-border" />
+          </motion.div>
+          <motion.div
+            {...statsAnimation(2)}
+            className="relative 2xl:px-24 px-16 md:py-8 py-4"
+          >
+            <h2 className="2xl:text-9xl md:text-7xl text-5xl">
+              <sup>+</sup>
+              {statsInView ? (
+                <CountUp start={0} end={50} duration={3} />
+              ) : (
+                <span>0</span>
+              )}
+            </h2>
+            <p className="mt-2 text-muted-foreground">identités visuelles</p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* FAQ - même style que la page Contact */}
+      <section>
+        <div className="2xl:py-20 py-11">
+          <div className="container">
+            <div className="flex flex-col gap-10 md:gap-20">
+              <div className="max-w-md text-center mx-auto">
+                <h2>
+                  <TextGenerateEffect words="Des questions ? Nous avons les" />
+                  <TextGenerateEffect
+                    words="réponses"
+                    delay={1}
+                    className="italic font-normal instrument-font"
+                  />
+                </h2>
+              </div>
+              <div className="flex flex-col">
+                <Accordion className="w-full flex flex-col gap-6">
+                  {FAQ_APROPOS.map((item, i) => (
+                    <AccordionItem
+                      key={i}
+                      value={`faq-${i}`}
+                      className={cn(
+                        "p-6 border border-border rounded-2xl flex flex-col gap-3",
+                      )}
+                    >
+                      <AccordionTrigger className="p-0 text-xl font-medium hover:no-underline **:data-[slot=accordion-trigger-icon]:hidden">
+                        <h4 className="text-foreground">{item.q}</h4>
+                        <PlusIcon className="w-6 h-6 shrink-0 transition-transform duration-200 group-aria-expanded/accordion-trigger:rotate-45" />
+                      </AccordionTrigger>
+                      <AccordionContent className="p-0 text-muted-foreground text-base">
+                        <p className="text-base font-normal text-muted-foreground">
+                          {item.a}
+                        </p>
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA bannière - solutions innovantes (structure exacte) */}
+      <section>
+        <div className="2xl:py-20 py-11">
+          <div className="container">
+            <div className="py-16 md:py-28 px-6 border border-dark_black/10 rounded-3xl bg-[linear-gradient(90deg,#CDEFFB_0%,#FFFFFF_33.23%,#FFFFFF_65.77%,#FDEECB_100%)] backdrop-blur-[200px] dark:bg-[linear-gradient(90deg,#CDEFFB_0%,#FFFFFF_33.23%,#FFFFFF_65.77%,#FDEECB_100%)]">
+              <div className="flex flex-col gap-6 items-center md:max-w-3xl mx-auto">
+                <div className="flex flex-col gap-3 items-center text-center">
+                  <h2 className="text-3xl md:text-5xl text-black">
+                    <TextGenerateEffect words="Des solutions innovantes pour des " />
+                    <TextGenerateEffect
+                      words="marques audacieuses"
+                      delay={0.5}
+                      className="font-instrument-serif italic font-normal text-black"
+                    />
+                  </h2>
+                  <p className="text-black/80">
+                    Vous souhaitez donner un coup d&apos;éclat à votre marque ? Nous créons des expériences immersives qui captivent, engagent et rendent votre entreprise inoubliable à chaque interaction.
+                  </p>
+                </div>
+                <Button
+                  className="relative text-sm font-medium rounded-full h-12 p-1 ps-6 pe-14 group transition-all duration-500 hover:ps-14 hover:pe-6 w-fit overflow-hidden bg-black hover:bg-black"
+                  nativeButton={false}
+                  render={<Link href="/contact" />}
+                >
+                  <span className="relative z-10 transition-all duration-500 text-white">
+                    Collaborons
+                  </span>
+                  <div className="absolute right-1 w-10 h-10 bg-white text-black rounded-full flex items-center justify-center transition-all duration-500 group-hover:right-[calc(100%-44px)] group-hover:rotate-45">
+                    <ArrowUpRight size={16} />
+                  </div>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

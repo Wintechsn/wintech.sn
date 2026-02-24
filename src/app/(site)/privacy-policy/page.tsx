@@ -11,11 +11,14 @@ export default function Page() {
                 className="relative w-full pt-44 2xl:pb-20 pb-10 before:absolute before:w-full before:h-full before:bg-linear-to-r before:from-blue_gradient before:via-white before:to-yellow_gradient before:rounded-full before:top-24 before:blur-3xl before:-z-10 dark:before:from-dark_blue_gradient dark:before:via-black dark:before:to-dark_yellow_gradient dark:before:rounded-full dark:before:blur-3xl dark:before:-z-10"
             >
                 <div className="container relative z-10">
-                    <div className='flex flex-col gap-5'>
-                        <h1 className='md:text-6xl text-4xl font-medium text-center'>
-                            Privacy Policy
-                        </h1>
-                        <div className="bg-white dark:bg-dark_black p-8 rounded-2xl">
+                    <div className="flex flex-col max-w-5xl mx-auto gap-8">
+                        <div className="relative flex flex-col text-center items-center sm:gap-6 gap-4">
+                            <h1 className="font-medium w-full md:text-6xl text-4xl">
+                                Privacy Policy
+                            </h1>
+                        </div>
+                    </div>
+                    <div className="bg-white dark:bg-dark_black p-8 rounded-2xl mt-10 max-w-5xl mx-auto">
                             <p className="text-opacity-60">
                                 This Privacy Statement explains how Personal Information about our (potential) customers and other individuals using our services is collected, used and disclosed by Getnextjstemplates and its respective affiliates ("us", "we", "our" or "Getnextjstemplates"). This Privacy Statement describes our privacy practices in relation to the use of our websites (including any customer portal or interactive customer website) (
                                 <Link href="https://getnextjstemplates.com/" className="text-dark_black">https://getnextjstemplates.com/</Link>), our software (Getnextjstemplates), services, solutions, tools, and related applications, services, and programs, including research and marketing activities, offered by us (the "Services"), as well as your choices regarding use, access, storage and correction of Personal Information. It also describes how we collect, use, disclose and otherwise process Personal Information collected in relation to our Services and otherwise in the course of our business activities.</p>

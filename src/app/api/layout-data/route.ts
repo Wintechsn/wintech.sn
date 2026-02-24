@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 
 const headerData = [
+    { label: 'Accueil', href: '/' },
     { label: 'À propos', href: '/a-propos' },
-    { label: 'Services', href: '/services' },
     { label: 'Réalisations', href: '/realisations' },
     // { label: 'Équipe', href: '/#team' },
     // { label: 'Tarifs', href: '/#pricing' },
@@ -18,17 +18,17 @@ const footerData = {
             {
                 icon: "/images/home/footerSocialIcon/linkedin.svg",
                 dark_icon: "/images/home/footerSocialIcon/linkedin_dark.svg",
-                link: "https://linkedin.com/in"
-            },
-            {
-                icon: "/images/home/footerSocialIcon/facebook.svg",
-                dark_icon: "/images/home/footerSocialIcon/facebook_dark.svg",
-                link: "https://facebook.com"
+                link: "https://www.linkedin.com/company/wintechsn"
             },
             {
                 icon: "/images/home/footerSocialIcon/instagram.svg",
                 dark_icon: "/images/home/footerSocialIcon/instagram_dark.svg",
-                link: "https://instagram.com"
+                link: "https://www.instagram.com/wintech.sn"
+            },
+            {
+                icon: "/images/home/footerSocialIcon/facebook.svg",
+                dark_icon: "/images/home/footerSocialIcon/facebook_dark.svg",
+                link: "https://www.facebook.com/wintech.sn"
             }
         ]
     },

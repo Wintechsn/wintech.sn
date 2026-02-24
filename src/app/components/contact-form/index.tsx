@@ -70,24 +70,33 @@ function ContactForm() {
   };
 
   return (
-    <section>
-      <div className="relative w-full pt-44 2xl:pb-20 pb-10 before:absolute before:w-full before:h-full before:bg-linear-to-r before:from-blue_gradient before:via-white before:to-yellow_gradient dark:before:from-dark_blue_gradient dark:before:via-black dark:before:to-dark_yellow_gradient dark:before:rounded-full dark:before:blur-3xl dark:before:-z-10 before:rounded-full before:top-24 before:blur-3xl  before:-z-10">
+    <>
+      {/* Titre */}
+      <section className="relative w-full pt-44 2xl:pb-20 pb-10 before:absolute before:w-full before:h-full before:bg-linear-to-r before:from-blue_gradient before:via-white before:to-yellow_gradient dark:before:from-dark_blue_gradient dark:before:via-black dark:before:to-dark_yellow_gradient dark:before:rounded-full dark:before:blur-3xl dark:before:-z-10 before:rounded-full before:top-24 before:blur-3xl before:-z-10">
         <div className="container relative z-10">
-          <div className="flex flex-col gap-10 md:gap-20">
-            <div className="relative flex flex-col text-center items-center">
-              <h2 className="font-medium w-full max-w-32">
+          <div className="flex flex-col max-w-5xl mx-auto gap-8">
+            <div className="relative flex flex-col text-center items-center sm:gap-6 gap-4">
+              <h1 className="font-medium w-full">
                 <TextGenerateEffect
-                  words="Envie de vous exprimer ? Prenez"
+                  words="Créons votre succès"
                   duration={0.5}
                 />
+                <br />
                 <TextGenerateEffect
-                  words="contact"
-                  delay={1.5}
+                  words="en ligne"
+                  delay={0.8}
                   className="italic font-normal instrument-font"
                 />
-              </h2>
+              </h1>
             </div>
-            {submitted ? (
+          </div>
+        </div>
+      </section>
+
+      {/* Formulaire / message de succès */}
+      <section className="2xl:py-20 py-11">
+        <div className="container">
+          {submitted ? (
               <div className="flex flex-col items-center gap-5 text-center max-w-xl mx-auto p-6 rounded-lg bg-green/20 dark:bg-white/5">
                 <div className="flex">
                   <Icon
@@ -253,11 +262,10 @@ function ContactForm() {
                   )}
                 </div>
               </form>
-            )}
-          </div>
+          )}
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
 

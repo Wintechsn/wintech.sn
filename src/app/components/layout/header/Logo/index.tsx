@@ -1,28 +1,24 @@
-import Image from 'next/image';
 import Link from 'next/link';
 
 interface HeaderProps { }
 const Logo: React.FC<HeaderProps> = () => {
     return (
-        <Link href="/">
-            <Image
+        <Link href="/" className="inline-flex items-center">
+            <img
                 src="/images/logo/logo.svg"
-                alt="logo"
+                alt="Wintech"
                 width={117}
                 height={34}
-                style={{ width: 'auto', height: 'auto' }}
-                quality={100}
-                priority={true}
-                className='dark:hidden'
+                className="h-20 sm:h-24 md:h-28 w-auto dark:hidden"
+                fetchPriority="high"
             />
-            <Image
+            <img
                 src="/images/logo/DarkModeLogo.svg"
-                alt="logo"
+                alt="Wintech"
                 width={160}
                 height={50}
-                style={{ width: 'auto', height: 'auto' }}
-                quality={100}
-                className='dark:block hidden'
+                className="h-20 sm:h-24 md:h-28 w-auto dark:block hidden"
+                fetchPriority="high"
             />
         </Link>
     );
