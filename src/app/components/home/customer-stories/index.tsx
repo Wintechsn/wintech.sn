@@ -182,7 +182,7 @@ function CustomerStories() {
                         width={344}
                         height={220}
                         sizes="(max-width: 768px) 100vw, 344px"
-                        quality={70}
+                        quality={75}
                         className="w-full h-52 object-cover"
                       />
                     </div>

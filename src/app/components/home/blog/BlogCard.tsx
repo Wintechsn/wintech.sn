@@ -14,8 +14,8 @@ const BlogCard = ({ article }: { article: any }) => {
             alt=""
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-300"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            quality={70}
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
+            quality={75}
           />
         </div>
         <div className="flex flex-col gap-3 p-6 2xl:p-8">
