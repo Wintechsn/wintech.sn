@@ -9,7 +9,7 @@ const Logo: React.FC<HeaderProps> = () => {
                 alt="Wintech"
                 width={117}
                 height={34}
-                className="h-20 sm:h-24 md:h-28 w-auto dark:hidden"
+                className="h-8 sm:h-9 md:h-10 w-auto dark:hidden"
                 fetchPriority="high"
             />
             <img
@@ -17,7 +17,7 @@ const Logo: React.FC<HeaderProps> = () => {
                 alt="Wintech"
                 width={160}
                 height={50}
-                className="h-20 sm:h-24 md:h-28 w-auto dark:block hidden"
+                className="h-8 sm:h-9 md:h-10 w-auto dark:block hidden"
                 fetchPriority="high"
             />
         </Link>

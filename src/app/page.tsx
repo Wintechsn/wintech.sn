@@ -40,16 +40,20 @@ export default function Home() {
       <OnlinePresence />
       {/* ---------------------Online presence section Ends-----------------  */}
 
-      {/* ---------------------Creative mind section Starts-----------------  */}
-      <CreativeMind />
+      {/* ---------------------Creative mind section Starts (masquée)-----------------  */}
+      <div className="hidden" aria-hidden>
+        <CreativeMind />
+      </div>
       {/* ---------------------Creative mind section Ends-----------------  */}
 
       {/* ---------------------Customer Stories section Starts-----------------  */}
       <CustomerStories />
       {/* ---------------------Customer Stories section Ends-----------------  */}
 
-      {/* ---------------------Subscription section Starts-----------------  */}
-      <Subscription />
+      {/* ---------------------Subscription section Starts (masquée)-----------------  */}
+      <div className="hidden" aria-hidden>
+        <Subscription />
+      </div>
       {/* ---------------------Subscription section Ends-----------------  */}
 
       {/* ---------------------Blog section Starts-----------------  */}
