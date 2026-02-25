@@ -84,7 +84,7 @@ function CustomerStories() {
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 640px"
                       className="object-cover object-center"
-                      quality={70}
+                      quality={80}
                     />
                   </div>
                   <div className="relative z-10 flex flex-col gap-6 flex-1">
@@ -182,7 +182,7 @@ function CustomerStories() {
                         width={344}
                         height={220}
                         sizes="(max-width: 768px) 100vw, 344px"
-                        quality={70}
+                        quality={80}
                         className="w-full h-52 object-cover"
                       />
                     </div>
