@@ -39,6 +39,7 @@
     "@types/node": "^20",
     "@types/react": "19.2.3",
     "@types/react-dom": "19.2.3",
+    "baseline-browser-mapping": "^2.10.0",
     "eslint": "^9",
     "eslint-config-next": "16.0.1",
     "postcss": "^8",
@@ -48,5 +49,11 @@
   "overrides": {
     "@types/react": "19.2.3",
     "@types/react-dom": "19.2.3"
-  }
+  },
+  "browserslist": [
+    "Chrome >= 111",
+    "Edge >= 111",
+    "Firefox >= 111",
+    "Safari >= 16.4"
+  ]
 }

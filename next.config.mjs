@@ -5,7 +5,7 @@ const nextConfig = {
     formats: ["image/avif", "image/webp"],
   },
   experimental: {
-    optimizePackageImports: ["motion", "motion/react"],
+    optimizePackageImports: ["motion", "motion/react", "@iconify/react"],
     useLightningcss: true,
     inlineCss: true,
   },

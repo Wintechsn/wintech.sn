@@ -1,16 +1,12 @@
 import { Metadata } from "next";
 import dynamic from "next/dynamic";
 import HeroSection from "./components/home/hero";
+import LazyBelowFold from "./components/home/LazyBelowFold";
+import DeferUntilIdle from "./components/home/DeferUntilIdle";
 
 const Brand = dynamic(() => import("./components/home/brand"), { ssr: true });
 const WebResult = dynamic(() => import("./components/home/web-result"), { ssr: true });
 const Innovation = dynamic(() => import("./components/home/innovation"), { ssr: true });
-const OnlinePresence = dynamic(() => import("./components/home/online-presence"), { ssr: true });
-const CreativeMind = dynamic(() => import("./components/home/creative-mind"), { ssr: true });
-const CustomerStories = dynamic(() => import("./components/home/customer-stories"), { ssr: true });
-const Subscription = dynamic(() => import("./components/home/subscription"), { ssr: true });
-const Blog = dynamic(() => import("./components/home/blog"), { ssr: true });
-const Solutions = dynamic(() => import("./components/home/solution"), { ssr: true });
 
 export const metadata: Metadata = {
     title: "Agence Web à Dakar - Création de Sites & Branding | Wintech",
@@ -52,33 +48,11 @@ export default function Home() {
       <Innovation />
       {/* ---------------------Innovation section Ends-----------------  */}
 
-      {/* ---------------------Online presence section Starts-----------------  */}
-      <OnlinePresence />
-      {/* ---------------------Online presence section Ends-----------------  */}
+      {/* Sections below the fold: JS chargé au scroll pour réduire le thread principal et le JS inutilisé */}
+      <LazyBelowFold />
 
-      {/* ---------------------Creative mind section Starts (masquée)-----------------  */}
-      <div className="hidden" aria-hidden>
-        <CreativeMind />
-      </div>
-      {/* ---------------------Creative mind section Ends-----------------  */}
-
-      {/* ---------------------Customer Stories section Starts-----------------  */}
-      <CustomerStories />
-      {/* ---------------------Customer Stories section Ends-----------------  */}
-
-      {/* ---------------------Subscription section Starts (masquée)-----------------  */}
-      <div className="hidden" aria-hidden>
-        <Subscription />
-      </div>
-      {/* ---------------------Subscription section Ends-----------------  */}
-
-      {/* ---------------------Blog section Starts-----------------  */}
-      <Blog />
-      {/* ---------------------Blog section Ends-----------------  */}
-
-      {/* ---------------------Solutions section Starts-----------------  */}
-      <Solutions />
-      {/* ---------------------Solutions section Ends-----------------  */}
+      {/* Sections masquées: JS chargé après requestIdleCallback */}
+      <DeferUntilIdle />
     </main>
   )
 }
