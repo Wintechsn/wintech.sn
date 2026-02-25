@@ -65,7 +65,9 @@ function OnlinePresence({ showTitle = true }: { showTitle?: boolean }) {
                       alt={items.title}
                       width={625}
                       height={410}
-                      className="rounded-2xl"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 625px"
+                      quality={80}
+                      className="rounded-2xl object-cover"
                     />
                     <Link
                       href={"https://www.framer.com/@wrap-pixel/"}

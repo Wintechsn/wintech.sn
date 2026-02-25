@@ -6,6 +6,8 @@ const nextConfig = {
   },
   experimental: {
     optimizePackageImports: ["motion", "motion/react"],
+    useLightningcss: true,
+    inlineCss: true,
   },
   compress: true,
 }

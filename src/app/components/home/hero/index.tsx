@@ -75,8 +75,9 @@ function HeroSection() {
                   className="font-instrument-serif italic tracking-tight"
                 />
               </h1>
-              <motion.p {...bottomAnimation} className="max-w-38">
-              Chez Wintech, nous créons des solutions digitales performantes — sites web, applications et branding — pour renforcer votre présence en ligne et accélérer durablement votre croissance.              </motion.p>
+              <p className="max-w-38">
+                Chez Wintech, nous créons des solutions digitales performantes — sites web, applications et branding — pour renforcer votre présence en ligne et accélérer durablement votre croissance.
+              </p>
             </div>
             <motion.div
               {...bottomAnimation}
