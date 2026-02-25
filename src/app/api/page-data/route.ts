@@ -70,31 +70,31 @@ const brandList = [
 
 const innovationList = [
   {
-    icon: "SwatchBook",
+    icon: "Globe",
     title: "Création de\n sites web",
     bg_color: "bg-purple-500/10",
     txt_color: "text-purple-500",
   },
   {
-    icon: "Image",
+    icon: "Monitor",
     title: "Applications\n web",
     bg_color: "bg-sky-400/10",
     txt_color: "text-sky-400",
   },
   {
-    icon: "WandSparkles",
+    icon: "Smartphone",
     title: "Applications\n mobiles",
     bg_color: "bg-orange-400/10",
     txt_color: "text-orange-400",
   },
   {
-    icon: "BarChart3",
+    icon: "Palette",
     title: "Branding &\n identité visuelle",
     bg_color: "bg-lime-400/10",
     txt_color: "text-lime-400",
   },
   {
-    icon: "AppWindowMac",
+    icon: "Search",
     title: "SEO &\n Social Media",
     bg_color: "bg-red-500/10",
     txt_color: "text-red-500",

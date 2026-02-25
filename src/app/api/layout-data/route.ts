@@ -13,7 +13,7 @@ const headerData = [
 const footerData = {
     brand: {
         name: "Wintech",
-        tagline: "Donnons du pouvoir aux entreprises avec des solutions innovantes. Créons ensemble quelque chose d'exceptionnel.",
+        tagline: "Agence web & digitale, créatrice de solutions sur mesure.",
         socialLinks: [
             {
                 icon: "/images/home/footerSocialIcon/linkedin.svg",

@@ -76,7 +76,7 @@ function HeroSection() {
                 />
               </h1>
               <motion.p {...bottomAnimation} className="max-w-38">
-              Chez Wintech, nous concevons des solutions digitales performantes — sites web, applications et identités de marque — pensées pour structurer votre présence en ligne, renforcer votre crédibilité et accélérer durablement la croissance de votre entreprise.              </motion.p>
+              Chez Wintech, nous créons des solutions digitales performantes — sites web, applications et branding — pour renforcer votre présence en ligne et accélérer durablement votre croissance.              </motion.p>
             </div>
             <motion.div
               {...bottomAnimation}

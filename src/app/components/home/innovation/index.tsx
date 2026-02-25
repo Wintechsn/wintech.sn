@@ -7,21 +7,21 @@ import { TextGenerateEffect } from "@/app/components/ui/text-generate-effect";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import {
-  SwatchBook,
-  WandSparkles,
-  BarChart3,
-  Image as ImageIcon,
-  AppWindowMac,
+  Globe,
+  Monitor,
+  Smartphone,
+  Palette,
+  Search,
   ArrowUpRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const ICON_MAP = {
-  SwatchBook,
-  WandSparkles,
-  BarChart3,
-  Image: ImageIcon,
-  AppWindowMac,
+  Globe,
+  Monitor,
+  Smartphone,
+  Palette,
+  Search,
 } as const;
 
 type IconName = keyof typeof ICON_MAP;

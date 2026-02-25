@@ -13,7 +13,23 @@ const Blog = dynamic(() => import("./components/home/blog"), { ssr: true });
 const Solutions = dynamic(() => import("./components/home/solution"), { ssr: true });
 
 export const metadata: Metadata = {
-    title: "Agence Wintech",
+    title: "Agence Web à Dakar - Création de Sites & Branding | Wintech",
+    description:
+        "Wintech, agence web à Dakar : création de sites modernes, branding et SEO. Boostez votre visibilité avec une équipe experte en solutions digitales.",
+    keywords: [
+        "Agence web à Dakar",
+        "Création de site internet professionnel",
+        "création de sites",
+        "SEO",
+        "branding",
+        "solutions digitales",
+    ],
+    openGraph: {
+        title: "Agence Web à Dakar - Création de Sites & SEO | Wintech",
+        description:
+            "Wintech, agence web à Dakar : création de sites modernes, branding et SEO. Boostez votre visibilité avec une équipe experte en solutions digitales.",
+        type: "website",
+    },
 };
 
 

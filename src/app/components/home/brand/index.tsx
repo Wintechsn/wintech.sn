@@ -22,7 +22,7 @@ function Brand() {
 
   return (
     <section>
-      <div className="2xl:py-20 py-11">
+      <div className="pb-11 2xl:pb-10">
         <div className="container">
           <div className="gap-4">
             <div className="flex justify-center text-center py-4 relative">
