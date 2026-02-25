@@ -91,22 +91,14 @@ const Footer = () => {
                 {footerData?.contactDetails?.address}
               </p>
               <p className='text-dark_black/60 hover:text-black dark:text-white/60 dark:hover:text-white'>
-                {footerData?.contactDetails?.email ? (
-                  <Link href={`mailto:${footerData.contactDetails.email}`}>
-                    {footerData.contactDetails.email}
-                  </Link>
-                ) : (
-                  <span aria-hidden>—</span>
-                )}
+                <Link href={`mailto:${footerData?.contactDetails?.email}`}>
+                  {footerData?.contactDetails?.email}
+                </Link>
               </p>
               <p className='text-dark_black/60 hover:text-black dark:text-white/60 dark:hover:text-white'>
-                {footerData?.contactDetails?.phone ? (
-                  <Link href={`tel:${footerData.contactDetails.phone}`}>
-                    {footerData.contactDetails.phone}
-                  </Link>
-                ) : (
-                  <span aria-hidden>—</span>
-                )}
+                <Link href={`tel:${footerData?.contactDetails?.phone}`}>
+                  {footerData?.contactDetails?.phone}
+                </Link>
               </p>
             </div>
           </div>

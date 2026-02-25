@@ -1,4 +1,7 @@
-/* Polices chargées via next/font dans layout.tsx (évite ressources bloquantes) */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap')
+layer(base);
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap')
+layer(base);
 
 @import "tailwindcss";
 @import "tw-animate-css";
@@ -218,7 +221,7 @@
 
 @layer utilities {
   .instrument-font {
-    font-family: var(--font-instrument-serif), serif;
+    font-family: 'Instrument Serif', serif;
   }
 
   .hero-mask {

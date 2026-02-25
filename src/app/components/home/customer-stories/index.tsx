@@ -75,41 +75,33 @@ function CustomerStories() {
                   initial={{ x: -100, y: -100, opacity: 0 }}
                   animate={topLeftInView ? { x: 0, y: 0, opacity: 1 } : {}}
                   transition={{ duration: 0.8 }}
-                  className="p-8 gap-64 rounded-2xl flex flex-col relative h-full w-full overflow-hidden min-h-[320px]"
+                  className="p-8 gap-64 rounded-2xl flex flex-col relative object-cover bg-center h-full w-full bg-cover bg-no-repeat overflow-hidden"
+                  style={{
+                    backgroundImage: `url(${TEMOIGNAGES[activeIndex].image})`,
+                  }}
                 >
-                  <div className="absolute inset-0 rounded-2xl overflow-hidden">
-                    <Image
-                      src={TEMOIGNAGES[activeIndex].image}
-                      alt=""
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 640px"
-                      className="object-cover object-center"
-                      quality={70}
-                    />
-                  </div>
-                  <div className="relative z-10 flex flex-col gap-6 flex-1">
-                    <div className="flex flex-row justify-between items-center w-full gap-4">
-                      <span className="text-white/60 uppercase text-sm font-medium shrink-0">
-                        Témoignages clients
-                      </span>
-                      <div className="flex gap-2 shrink-0">
-                        {TEMOIGNAGES.map((_, i) => (
-                          <button
-                            key={i}
-                            type="button"
-                            aria-label={`Témoignage ${i + 1}`}
-                            onClick={() => setActiveIndex(i)}
-                            className={`h-1.5 rounded-full transition-all duration-300 ${
-                              i === activeIndex
-                                ? "bg-white w-6"
-                                : "bg-white/40 w-1.5 hover:bg-white/60"
-                            }`}
-                          />
-                        ))}
-                      </div>
+                  <div className="flex flex-row justify-between items-center w-full gap-4">
+                    <span className="text-white/60 uppercase text-sm font-medium shrink-0">
+                      Témoignages clients
+                    </span>
+                    <div className="flex gap-2 shrink-0">
+                      {TEMOIGNAGES.map((_, i) => (
+                        <button
+                          key={i}
+                          type="button"
+                          aria-label={`Témoignage ${i + 1}`}
+                          onClick={() => setActiveIndex(i)}
+                          className={`h-1.5 rounded-full transition-all duration-300 ${
+                            i === activeIndex
+                              ? "bg-white w-6"
+                              : "bg-white/40 w-1.5 hover:bg-white/60"
+                          }`}
+                        />
+                      ))}
                     </div>
-                    <div className="flex flex-col gap-6">
-                      <AnimatePresence mode="wait" initial={false}>
+                  </div>
+                  <div className="flex flex-col gap-6">
+                    <AnimatePresence mode="wait" initial={false}>
                       <motion.div
                         key={activeIndex}
                         initial={{ opacity: 0 }}
@@ -130,8 +122,7 @@ function CustomerStories() {
                           </p>
                         </div>
                       </motion.div>
-                      </AnimatePresence>
-                    </div>
+                    </AnimatePresence>
                   </div>
                 </motion.div>
 
@@ -181,9 +172,7 @@ function CustomerStories() {
                         alt="image"
                         width={344}
                         height={220}
-                        sizes="(max-width: 768px) 100vw, 344px"
-                        quality={75}
-                        className="w-full h-52 object-cover"
+                        className="w-full h-52"
                       />
                     </div>
                   </div>
