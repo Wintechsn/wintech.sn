@@ -29,7 +29,7 @@ export default function ShareArticle({ title, slug }: ShareArticleProps) {
     },
     {
       label: "LinkedIn",
-      href: `https://www.linkedin.com/shareArticle?mini=true&url=${encodedUrl}&title=${encodedTitle}`,
+      href: `https://www.linkedin.com/sharing/share-offsite/?url=`,
       icon: "mdi:linkedin",
     },
     {
