@@ -38,27 +38,23 @@ const footerData = {
             { name: "Nous contacter", url: "/contact" },
             { name: "À propos", url: "/a-propos" },
             { name: "Réalisations", url: "/realisations" },
-            { name: "Services", url: "/services" },
-            { name: "Tarifs", url: "/#pricing" },
             { name: "Blog", url: "/blog" }
         ]
     },
     otherPages: {
-        name: "Autres pages",
+        name: "Mentions légales",
         links: [
-            { name: "Erreur 404", url: "/not-found" },
             { name: "Conditions générales", url: "/terms-and-conditions" },
             { name: "Politique de confidentialité", url: "/privacy-policy" },
-            { name: "Documentation", url: "/documentation" }
         ]
     },
     contactDetails: {
         name:"Coordonnées",
-        address: "81 Rivington Street London EC2A 3AY",
-        email: "hello@wintech.com",
-        phone: "0105 192 3556"
+        address: "Dakar, Sénégal",
+        email: "Contact@wintech.sn",
+        phone: "+221 77 589 3076"
     },
-    copyright: "©2025 Wintech. Tous droits réservés."
+    copyright: "©2026 Wintech. Tous droits réservés."
 };
 
 export const GET = async () => {
