@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { fetchFromWordPress } from "@/lib/wpClient";
 
 const avatarList = [
   {
@@ -293,34 +294,111 @@ const achievementsList = [
   },
 ];
 
-const blogList = [
-  {
-    slug: "design-ux-tendances-2025",
-    image: "/images/home/customerStories/creativity_img.jpg",
-    title: "Tendances UX et design en 2025",
-    excerpt: "Découvrez les tendances qui façonneront l'expérience utilisateur et le design d'interfaces cette année.",
-    date: "15 janvier 2025",
-    category: "Design",
-  },
-  {
-    slug: "innovation-marque-digitale",
-    image: "/images/home/customerStories/customer_bg_img.jpg",
-    title: "Innovation et stratégie de marque digitale",
-    excerpt: "Comment aligner innovation produit et identité de marque pour une présence digitale cohérente.",
-    date: "8 janvier 2025",
-    category: "Stratégie",
-  },
-  {
-    slug: "creativite-projets-transformation",
-    image: "/images/home/creative/creative_img_1.png",
-    title: "Créativité et transformation des projets",
-    excerpt: "Le rôle du design et de la créativité dans la réussite des projets de transformation digitale.",
-    date: "2 janvier 2025",
-    category: "Actualités",
-  },
-];
+type WordPressPostsResponse = {
+  posts: {
+    nodes: {
+      slug: string;
+      title: string;
+      date: string;
+      excerpt?: string | null;
+      content?: string | null;
+      seo?: {
+        title?: string | null;
+        metaDesc?: string | null;
+      } | null;
+      categories?: {
+        nodes?: {
+          name: string;
+        }[];
+      } | null;
+      featuredImage?: {
+        node?: {
+          mediaItemUrl?: string | null;
+          sourceUrl?: string | null;
+          altText?: string | null;
+        } | null;
+      } | null;
+    }[];
+  };
+};
 
-export const GET = async () => {
+async function getBlogListFromWordPress(limit?: number) {
+  const first = limit ?? 100;
+  const query = `
+    query GetAllPost($first: Int) {
+      posts(first: $first) {
+        nodes {
+          title
+          slug
+          date
+          excerpt
+          seo {
+            title
+            metaDesc
+          }
+          featuredImage {
+            node {
+              mediaItemUrl
+              sourceUrl
+              altText
+            }
+          }
+          categories {
+            nodes {
+              name
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  const data = await fetchFromWordPress<WordPressPostsResponse>(query, {
+    first,
+  });
+
+  return data.posts.nodes.map((post) => ({
+    slug: post.slug,
+    image:
+      post.featuredImage?.node?.sourceUrl ||
+      post.featuredImage?.node?.mediaItemUrl ||
+      "/images/home/customerStories/creativity_img.jpg",
+    // On affiche le vrai titre de l'article, sans le suffixe du site ajouté par Yoast (ex: " - backend-wintech.lindor.dev")
+    title: post.title,
+    excerpt: post.seo?.metaDesc || post.excerpt || "",
+    date: new Date(post.date).toLocaleDateString("fr-FR", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    }),
+    category:
+      post.categories?.nodes && post.categories.nodes.length > 0
+        ? post.categories.nodes[0].name
+        : "Actualités",
+  }));
+}
+
+type BlogListItem = {
+  slug: string;
+  image: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  category: string;
+};
+
+export const GET = async (request: Request) => {
+  let blogList: BlogListItem[] = [];
+  const { searchParams } = new URL(request.url);
+  const blogLimit = searchParams.get("blogLimit");
+  const limit = blogLimit ? parseInt(blogLimit, 10) : undefined;
+
+  try {
+    blogList = await getBlogListFromWordPress(Number.isNaN(limit) ? undefined : limit);
+  } catch (error) {
+    console.error("Error loading blog posts from WordPress:", error);
+  }
+
   return NextResponse.json({
     avatarList,
     brandList,

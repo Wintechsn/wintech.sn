@@ -15,7 +15,7 @@ function Blog() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch('/api/page-data')
+        const res = await fetch('/api/page-data?blogLimit=3')
         if (!res.ok) throw new Error('Failed to fetch')
         const data = await res.json()
         setBlogList(data?.blogList ?? [])
