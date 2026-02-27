@@ -13,6 +13,11 @@ function ensureAbsoluteContentUrls(html: string): string {
   );
 }
 
+function stripHtml(html: string): string {
+  if (!html) return "";
+  return html.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+}
+
 type Props = { params: Promise<{ slug: string }> };
 
 type WordPressPostResponse = {
@@ -113,19 +118,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       ? post.image
       : `${baseUrl}${post.image}`;
 
+    const plainDescription = stripHtml(post.excerpt);
+
     return {
       title: post.title,
-      description: post.excerpt,
+      description: plainDescription,
       openGraph: {
         title: post.title,
-        description: post.excerpt,
+        description: plainDescription,
         type: "article",
         images: [{ url: imageUrl, width: 1200, height: 630, alt: post.title }],
       },
       twitter: {
         card: "summary_large_image",
         title: post.title,
-        description: post.excerpt,
+        description: plainDescription,
         images: [imageUrl],
       },
     };
