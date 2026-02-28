@@ -1,6 +1,5 @@
 "use client";
 import { Icon } from "@iconify/react/dist/iconify.js";
-import Link from "next/link";
 import { useState } from "react";
 import { TextGenerateEffect } from "../ui/text-generate-effect";
 import { ArrowUpRight } from "lucide-react";
@@ -129,39 +128,6 @@ function ContactForm() {
                     Parfait ! Votre message a bien été envoyé. Nous vous recontacterons très prochainement.
                   </h5>
                 </div>
-
-                <Link
-                  href="/"
-                  className="group w-fit text-black font-medium bg-transparent dark:bg-white/20 dark:hover:bg-white rounded-full flex items-center gap-4 py-2 pl-5 pr-2 hover:bg-transparent border border-dark_black"
-                >
-                  <span className="group-hover:translate-x-9 group-hover:dark:text-dark_black dark:text-white transform transition-transform duration-200 ease-in-out">
-                    Retour à l'accueil
-                  </span>
-                  <svg
-                    width="32"
-                    height="32"
-                    viewBox="0 0 32 32"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="group-hover:-translate-x-[125px] transition-all duration-200 ease-in-out group-hover:rotate-45"
-                  >
-                    <rect
-                      width="32"
-                      height="32"
-                      rx="16"
-                      fill="white"
-                      className=" transition-colors duration-200 ease-in-out fill-black"
-                    />
-                    <path
-                      d="M11.832 11.3334H20.1654M20.1654 11.3334V19.6668M20.1654 11.3334L11.832 19.6668"
-                      stroke="#1B1D1E"
-                      strokeWidth="1.42857"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className=" transition-colors duration-200 ease-in-out stroke-white"
-                    />
-                  </svg>
-                </Link>
               </div>
             ) : (
               <form
