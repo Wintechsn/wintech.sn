@@ -16,44 +16,64 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
+const INTEREST_OPTIONS = [
+  "Création de sites web",
+  "Refonte de site web",
+  "Applications web",
+  "Applications mobiles",
+  "Branding & identité visuelle",
+  "SEO & Social Media",
+  "Gestion de réseaux sociaux",
+] as const;
+
+const DELAY_OPTIONS = [
+  "Urgent (moins d'1 mois)",
+  "1–3 mois",
+  "3–6 mois",
+  "Flexible",
+] as const;
+
 function ContactForm() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    interest: "design & branding",
-    budget: "",
+    phone: "",
+    interest: "" as string,
+    delay: "" as string,
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
   const [loader, setLoader] = useState(false);
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const reset = () => {
-    formData.name = "";
-    formData.email = "";
-    formData.interest = "design & branding";
-    formData.budget = "";
-    formData.message = "";
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      interest: "",
+      delay: "",
+      message: "",
+    });
   };
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!formData.delay) return;
     setLoader(true);
 
-    fetch("https://formsubmit.co/ajax/bhainirav772@gmail.com", {
+    fetch("https://formsubmit.co/ajax/contact@wintech.sn", {
       method: "POST",
-      headers: { "Content-type": "application/json" },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         name: formData.name,
         email: formData.email,
+        phone: formData.phone,
         interest: formData.interest,
-        budget: formData.budget,
+        delay: formData.delay,
         message: formData.message,
       }),
     })
@@ -148,9 +168,9 @@ function ContactForm() {
                 onSubmit={handleSubmit}
                 className="flex flex-col bg-white dark:bg-dark_black rounded-2xl p-8 gap-8"
               >
-                <div className="flex flex-col md:flex md:flex-row gap-6">
+                <div className="flex flex-col md:flex-row gap-6">
                   <div className="w-full">
-                    <Label htmlFor="name">Votre nom</Label>
+                    <Label htmlFor="name">Nom complet *</Label>
                     <Input
                       className="w-full mt-2 rounded-full border px-5 py-3 h-12 outline-hidden transition dark:border-white/20 focus:border-dark_black/50 dark:focus:border-white/50 dark:bg-black/40 focus-visible:ring-0 shadow-none"
                       id="name"
@@ -158,11 +178,12 @@ function ContactForm() {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      placeholder="Entrez votre nom"
+                      placeholder="Votre nom complet"
+                      required
                     />
                   </div>
                   <div className="w-full">
-                    <Label htmlFor="email">Votre e-mail</Label>
+                    <Label htmlFor="email">Email professionnel *</Label>
                     <Input
                       className="w-full mt-2 rounded-full border px-5 py-3 h-12 outline-hidden transition dark:border-white/20 focus:border-dark_black/50 dark:focus:border-white/50 dark:bg-black/40 focus-visible:ring-0 shadow-none"
                       id="email"
@@ -170,65 +191,68 @@ function ContactForm() {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder="Entrez votre e-mail"
+                      placeholder="votre@email.com"
+                      required
                     />
                   </div>
                 </div>
-                <div className="flex flex-col md:flex md:flex-row gap-6">
-                  <div className="w-full">
-                    <Label htmlFor="interest">
-                      Quel est votre domaine d'intérêt ?
-                    </Label>
-                    <Select
-                      value={formData.interest}
-                      onValueChange={(value) => {
-                        if (value) {
-                          setFormData((prev) => ({ ...prev, interest: value }));
-                        }
-                      }}
-                    >
-                      <SelectTrigger className="w-full mt-2 text-base px-5 h-12! rounded-full border transition-all duration-500 dark:border-white/20 focus:outline-0 dark:bg-black/40 focus-visible:ring-0 shadow-none">
-                        <SelectValue placeholder="Design et branding" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="design & branding">
-                          Design et branding
-                        </SelectItem>
-                        <SelectItem value="Ecommerce">Ecommerce</SelectItem>
-                        <SelectItem value="Specialist">Specialist</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div className="w-full h-full">
-                    <Label htmlFor="budget">Budget du projet</Label>
-                    <Select
-                      value={formData.budget}
-                      onValueChange={(value) => {
-                        if (value) {
-                          setFormData((prev) => ({ ...prev, budget: value }));
-                        }
-                      }}
-                    >
-                      <SelectTrigger className="w-full mt-2 text-base px-5 py-3 h-12! rounded-full border transition-all duration-500 dark:text-white border-solid dark:border-white/20 focus:outline-0 dark:bg-black/40 focus-visible:ring-0 shadow-none">
-                        <SelectValue placeholder="Choisissez votre budget" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="$10000">$10,000</SelectItem>
-                        <SelectItem value="$50500">$50,500</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
+                <div className="w-full">
+                  <Label htmlFor="phone">Téléphone</Label>
+                  <Input
+                    className="w-full mt-2 rounded-full border px-5 py-3 h-12 outline-hidden transition dark:border-white/20 focus:border-dark_black/50 dark:focus:border-white/50 dark:bg-black/40 focus-visible:ring-0 shadow-none"
+                    id="phone"
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="+221 00 000 00 00"
+                  />
                 </div>
                 <div className="w-full">
-                  <Label htmlFor="message">Message</Label>
+                  <Label htmlFor="interest">Intéressé par</Label>
+                  <Select
+                    value={formData.interest}
+                    onValueChange={(value) => setFormData((prev) => ({ ...prev, interest: value }))}
+                  >
+                    <SelectTrigger className="w-full mt-2 text-base px-5 h-12! rounded-full border transition-all duration-500 dark:border-white/20 focus:outline-0 dark:bg-black/40 focus-visible:ring-0 shadow-none">
+                      <SelectValue placeholder="Choisissez une option" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {INTEREST_OPTIONS.map((opt) => (
+                        <SelectItem key={opt} value={opt}>
+                          {opt}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="w-full">
+                  <Label htmlFor="delay">Délai souhaité *</Label>
+                  <Select
+                    value={formData.delay}
+                    onValueChange={(value) => setFormData((prev) => ({ ...prev, delay: value }))}
+                  >
+                    <SelectTrigger className="w-full mt-2 text-base px-5 h-12! rounded-full border transition-all duration-500 dark:border-white/20 focus:outline-0 dark:bg-black/40 focus-visible:ring-0 shadow-none">
+                      <SelectValue placeholder="Choisissez un délai" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {DELAY_OPTIONS.map((opt) => (
+                        <SelectItem key={opt} value={opt}>
+                          {opt}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="w-full">
+                  <Label htmlFor="message">Description du besoin</Label>
                   <Textarea
-                    className="w-full mt-2 h-28 rounded-3xl border px-5 py-3 outline-hidden transition dark:border-white/20
-                                        focus:border-dark_black/50 dark:focus:border-white/50 dark:bg-black/40 focus-visible:ring-0 shadow-none"
+                    className="w-full mt-2 h-28 rounded-3xl border px-5 py-3 outline-hidden transition dark:border-white/20 focus:border-dark_black/50 dark:focus:border-white/50 dark:bg-black/40 focus-visible:ring-0 shadow-none"
                     name="message"
                     id="message"
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="Parlez-nous de votre projet"
+                    placeholder="Décrivez votre projet ou votre besoin..."
                     rows={4}
                   />
                 </div>
@@ -236,7 +260,8 @@ function ContactForm() {
                   {!loader ? (
                     <Button
                       type="submit"
-                      className="relative text-sm font-medium rounded-full h-12 p-1 ps-6 pe-14 group transition-all duration-500 hover:ps-14 hover:pe-6 w-fit overflow-hidden"
+                      disabled={!formData.delay}
+                      className="relative text-sm font-medium rounded-full h-12 p-1 ps-6 pe-14 group transition-all duration-500 hover:ps-14 hover:pe-6 w-fit overflow-hidden disabled:opacity-50 disabled:pointer-events-none"
                     >
                       <span className="relative z-10 transition-all duration-500">
                         Collaborons
