@@ -212,7 +212,7 @@ function ContactForm() {
                   <Label htmlFor="interest">Intéressé par</Label>
                   <Select
                     value={formData.interest}
-                    onValueChange={(value) => setFormData((prev) => ({ ...prev, interest: value }))}
+                    onValueChange={(value) => setFormData((prev) => ({ ...prev, interest: value ?? "" }))}
                   >
                     <SelectTrigger className="w-full mt-2 text-base px-5 h-12! rounded-full border transition-all duration-500 dark:border-white/20 focus:outline-0 dark:bg-black/40 focus-visible:ring-0 shadow-none">
                       <SelectValue placeholder="Choisissez une option" />
@@ -230,7 +230,7 @@ function ContactForm() {
                   <Label htmlFor="delay">Délai souhaité *</Label>
                   <Select
                     value={formData.delay}
-                    onValueChange={(value) => setFormData((prev) => ({ ...prev, delay: value }))}
+                    onValueChange={(value) => setFormData((prev) => ({ ...prev, delay: value ?? "" }))}
                   >
                     <SelectTrigger className="w-full mt-2 text-base px-5 h-12! rounded-full border transition-all duration-500 dark:border-white/20 focus:outline-0 dark:bg-black/40 focus-visible:ring-0 shadow-none">
                       <SelectValue placeholder="Choisissez un délai" />
