@@ -21,35 +21,44 @@ export default function CommentForm({ postId, articleTitle }: CommentFormProps) 
   });
   const [submitted, setSubmitted] = useState(false);
   const [loader, setLoader] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    if (error) setError(null);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoader(true);
+    setError(null);
 
-    fetch("/api/comments", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        postId,
-        author_name: formData.name,
-        author_email: formData.email,
-        content: formData.message,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setSubmitted(data.success);
-        if (data.success) {
-          setFormData({ name: "", email: "", message: "" });
-        }
-      })
-      .catch(() => {})
-      .finally(() => setLoader(false));
+    try {
+      const res = await fetch("/api/comments", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          postId: Number(postId),
+          author_name: formData.name,
+          author_email: formData.email,
+          content: formData.message,
+        }),
+      });
+
+      const data = await res.json().catch(() => ({ success: false, message: "Réponse invalide du serveur." }));
+
+      if (data.success) {
+        setSubmitted(true);
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setError(data.message || "Impossible d'enregistrer le commentaire. Réessayez.");
+      }
+    } catch {
+      setError("Erreur de connexion. Vérifiez votre réseau et réessayez.");
+    } finally {
+      setLoader(false);
+    }
   };
 
   if (submitted) {
@@ -78,6 +87,11 @@ export default function CommentForm({ postId, articleTitle }: CommentFormProps) 
       <p className="text-dark_black/60 dark:text-white/60 text-sm mb-6">
         Votre adresse e-mail ne sera pas publiée.
       </p>
+      {error && (
+        <div className="mb-6 p-4 rounded-2xl bg-red-500/10 dark:bg-red-500/20 border border-red-500/30 text-red-700 dark:text-red-300 text-sm">
+          {error}
+        </div>
+      )}
       <form
         onSubmit={handleSubmit}
         className="flex flex-col bg-white dark:bg-dark_black rounded-2xl p-8 gap-8"

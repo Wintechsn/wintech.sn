@@ -8,16 +8,18 @@ const WP_REST_URL =
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { postId, author_name, author_email, content } = body;
+    const { postId: rawPostId, author_name, author_email, content } = body;
 
-    if (
-      typeof postId !== "number" ||
-      !author_name?.trim() ||
-      !author_email?.trim() ||
-      !content?.trim()
-    ) {
+    const postId = typeof rawPostId === "string" ? parseInt(rawPostId, 10) : Number(rawPostId);
+    if (!Number.isFinite(postId) || postId < 1) {
       return NextResponse.json(
-        { success: false, message: "Champs requis manquants (postId, author_name, author_email, content)." },
+        { success: false, message: "Article invalide (postId manquant ou incorrect)." },
+        { status: 400 }
+      );
+    }
+    if (!author_name?.trim() || !author_email?.trim() || !content?.trim()) {
+      return NextResponse.json(
+        { success: false, message: "Tous les champs (nom, e-mail, commentaire) sont obligatoires." },
         { status: 400 }
       );
     }
@@ -36,15 +38,18 @@ export async function POST(request: NextRequest) {
       }),
     });
 
-    const data = await res.json().catch(() => ({}));
+    const contentType = res.headers.get("content-type") || "";
+    const data = contentType.includes("application/json")
+      ? await res.json().catch(() => ({}))
+      : {};
 
     if (!res.ok) {
       const message =
         data?.message ||
-        data?.code ||
-        `WordPress a refusé le commentaire (${res.status})`;
+        (typeof data?.code === "string" ? data.code : null) ||
+        `WordPress a refusé le commentaire (${res.status}). Vérifiez que les commentaires sont autorisés pour cet article.`;
       return NextResponse.json(
-        { success: false, message: typeof message === "string" ? message : JSON.stringify(message) },
+        { success: false, message },
         { status: res.status >= 500 ? 502 : 400 }
       );
     }
