@@ -62,14 +62,16 @@ function OnlinePresence({ showTitle = true }: { showTitle?: boolean }) {
                   <div className="relative">
                     <Image
                       src={items.image}
-                      alt={items.title}
+                      alt={items.altText ?? items.title}
                       width={625}
                       height={410}
                       className="rounded-2xl"
                     />
+                    {items.link && (
                     <Link
-                      href={"https://www.framer.com/@wrap-pixel/"}
+                      href={items.link}
                       target="_blank"
+                      rel="noopener noreferrer"
                       className="absolute top-0 left-0 bg-black/50 w-full h-full rounded-2xl hidden group-hover:flex"
                     >
                       <span className="flex justify-end p-5 w-full">
@@ -81,6 +83,7 @@ function OnlinePresence({ showTitle = true }: { showTitle?: boolean }) {
                         />
                       </span>
                     </Link>
+                    )}
                   </div>
 
                   <div className="flex flex-col items-start gap-4">
@@ -88,14 +91,14 @@ function OnlinePresence({ showTitle = true }: { showTitle?: boolean }) {
                       {items.title}
                     </h3>
                     <div className="flex gap-3">
-                      {items.tag?.map((tag: any, idx: number) => (
+                      {items.tag?.length ? items.tag.map((tag: string, idx: number) => (
                         <p
                           key={idx}
                           className="text-sm border border-border w-fit py-1.5 px-4 rounded-full hover:bg-dark_black hover:text-white"
                         >
                           {tag}
                         </p>
-                      ))}
+                      )) : null}
                     </div>
                   </div>
                 </motion.div>

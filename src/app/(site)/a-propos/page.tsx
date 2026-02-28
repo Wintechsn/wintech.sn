@@ -12,7 +12,17 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import { PlusIcon, ArrowUpRight } from "lucide-react";
+import {
+  PlusIcon,
+  ArrowUpRight,
+  Globe,
+  RefreshCw,
+  Monitor,
+  Smartphone,
+  Palette,
+  TrendingUp,
+  type LucideIcon,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 import Brand from "@/app/components/home/brand";
 
@@ -39,9 +49,54 @@ const FAQ_APROPOS = [
   },
 ];
 
+const DOMAINES_COMPETENCE: {
+  title: string;
+  description: string;
+  icon: LucideIcon;
+}[] = [
+  {
+    title: "Création de sites web",
+    description:
+      "Sites vitrines, e-commerce et portails sur mesure, responsive et optimisés pour la performance et le référencement.",
+    icon: Globe,
+  },
+  {
+    title: "Refonte de site web",
+    description:
+      "Modernisation de votre site existant : design, technique et expérience utilisateur pour renforcer votre présence en ligne.",
+    icon: RefreshCw,
+  },
+  {
+    title: "Applications web",
+    description:
+      "Outils métier, dashboards et interfaces web performantes pour automatiser et piloter votre activité au quotidien.",
+    icon: Monitor,
+  },
+  {
+    title: "Applications mobiles",
+    description:
+      "Applications iOS et Android natives ou cross-platform pour toucher vos utilisateurs partout, à tout moment.",
+    icon: Smartphone,
+  },
+  {
+    title: "Branding & identité visuelle",
+    description:
+      "Logo, charte graphique et supports de communication pour une marque cohérente et mémorable.",
+    icon: Palette,
+  },
+  {
+    title: "SEO & Social Media",
+    description:
+      "Référencement naturel et stratégie sur les réseaux sociaux pour accroître votre visibilité et engager votre audience.",
+    icon: TrendingUp,
+  },
+];
+
 export default function AProposPage() {
   const statsRef = useRef(null);
   const statsInView = useInView(statsRef, { once: true });
+  const domainesRef = useRef(null);
+  const domainesInView = useInView(domainesRef, { once: true });
 
   const statsAnimation = (index: number) => ({
     initial: { y: "25%", opacity: 0 },
@@ -121,6 +176,73 @@ export default function AProposPage() {
 
       {/* Marques - Ils nous font confiance */}
       <Brand title="Ils nous font confiance" />
+
+      {/* Nos domaines de compétence */}
+      <section ref={domainesRef}>
+        <div className="2xl:py-20 py-11">
+          <div className="container">
+            <div className="flex flex-col gap-10 md:gap-16">
+              <div className="max-w-2xl text-center mx-auto">
+                <h2>
+                  <TextGenerateEffect words="Nos domaines de" duration={0.5} />
+                  <TextGenerateEffect
+                    words="compétence"
+                    delay={0.6}
+                    className="italic font-normal instrument-font"
+                  />
+                </h2>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                {DOMAINES_COMPETENCE.map((domaine, index) => {
+                  const Icon = domaine.icon;
+                  return (
+                    <motion.div
+                      key={domaine.title}
+                      initial={{ y: "20%", opacity: 0 }}
+                      animate={
+                        domainesInView
+                          ? { y: 0, opacity: 1 }
+                          : { y: "20%", opacity: 0 }
+                      }
+                      transition={{
+                        duration: 0.4,
+                        delay: 0.1 + index * 0.08,
+                      }}
+                      className={cn(
+                        "group relative overflow-hidden",
+                        "rounded-2xl border border-dark_black/10 dark:border-white/10",
+                        "bg-white dark:bg-dark_black",
+                        "p-6 md:p-8",
+                        "hover:border-dark_black/20 dark:hover:border-white/20",
+                        "hover:shadow-lg dark:hover:shadow-white/5",
+                        "transition-all duration-300"
+                      )}
+                    >
+                      <div
+                        className={cn(
+                          "mb-5 flex h-12 w-12 items-center justify-center rounded-xl",
+                          "bg-dark_black/5 dark:bg-white/10",
+                          "text-foreground",
+                          "group-hover:bg-primary/10 group-hover:text-primary dark:group-hover:bg-primary/20",
+                          "transition-colors duration-300"
+                        )}
+                      >
+                        <Icon className="h-6 w-6" strokeWidth={1.5} />
+                      </div>
+                      <h3 className="mb-3 text-lg font-semibold text-foreground">
+                        {domaine.title}
+                      </h3>
+                      <p className="text-sm leading-relaxed text-muted-foreground">
+                        {domaine.description}
+                      </p>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* FAQ - même style que la page Contact */}
       <section>

@@ -294,6 +294,60 @@ const achievementsList = [
   },
 ];
 
+type WordPressProjectsResponse = {
+  projets: {
+    nodes: {
+      title: string;
+      lienVersLeProjet?: string | null;
+      categories?: {
+        nodes?: { name: string }[];
+      } | null;
+      featuredImage?: {
+        node?: {
+          altText?: string | null;
+          mediaItemUrl?: string | null;
+        } | null;
+      } | null;
+    }[];
+  };
+};
+
+async function getProjectsFromWordPress() {
+  const query = `
+    query GetAllProjects {
+      projets {
+        nodes {
+          title
+          lienVersLeProjet
+          categories {
+            nodes {
+              name
+            }
+          }
+          featuredImage {
+            node {
+              altText
+              mediaItemUrl
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  const data = await fetchFromWordPress<WordPressProjectsResponse>(query);
+  return data.projets.nodes.map((projet) => ({
+    title: projet.title,
+    image:
+      projet.featuredImage?.node?.mediaItemUrl ||
+      "/images/home/onlinePresence/online_img_1.jpg",
+    altText: projet.featuredImage?.node?.altText ?? projet.title,
+    link: projet.lienVersLeProjet ?? undefined,
+    tag:
+      projet.categories?.nodes?.map((c) => c.name) ?? [],
+  }));
+}
+
 type WordPressPostsResponse = {
   posts: {
     nodes: {
@@ -387,8 +441,17 @@ type BlogListItem = {
   category: string;
 };
 
+type OnlinePresenceItem = {
+  image: string;
+  title: string;
+  tag: string[];
+  link?: string;
+  altText?: string;
+};
+
 export const GET = async (request: Request) => {
   let blogList: BlogListItem[] = [];
+  let projectsList: OnlinePresenceItem[] = onlinePresenceList;
   const { searchParams } = new URL(request.url);
   const blogLimit = searchParams.get("blogLimit");
   const limit = blogLimit ? parseInt(blogLimit, 10) : undefined;
@@ -399,11 +462,20 @@ export const GET = async (request: Request) => {
     console.error("Error loading blog posts from WordPress:", error);
   }
 
+  try {
+    const projects = await getProjectsFromWordPress();
+    if (projects.length > 0) {
+      projectsList = projects;
+    }
+  } catch (error) {
+    console.error("Error loading projects from WordPress:", error);
+  }
+
   return NextResponse.json({
     avatarList,
     brandList,
     innovationList,
-    onlinePresenceList,
+    onlinePresenceList: projectsList,
     creativeMindList,
     WebResultTagList,
     statisticsCounter,
