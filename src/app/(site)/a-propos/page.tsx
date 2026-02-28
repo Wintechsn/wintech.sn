@@ -14,6 +14,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { PlusIcon, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Brand from "@/app/components/home/brand";
 
 const FAQ_APROPOS = [
   {
@@ -117,6 +118,9 @@ export default function AProposPage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Marques - Ils nous font confiance */}
+      <Brand title="Ils nous font confiance" />
 
       {/* FAQ - même style que la page Contact */}
       <section>
