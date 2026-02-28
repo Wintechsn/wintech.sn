@@ -62,13 +62,13 @@ function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.delay) return;
     setLoader(true);
 
     fetch("https://formsubmit.co/ajax/contact@wintech.sn", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
+        _subject: "Wintech - Nouveau message de contact",
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
@@ -227,7 +227,7 @@ function ContactForm() {
                   </Select>
                 </div>
                 <div className="w-full">
-                  <Label htmlFor="delay">Délai souhaité *</Label>
+                  <Label htmlFor="delay">Délai souhaité</Label>
                   <Select
                     value={formData.delay}
                     onValueChange={(value) => setFormData((prev) => ({ ...prev, delay: value ?? "" }))}
@@ -260,8 +260,7 @@ function ContactForm() {
                   {!loader ? (
                     <Button
                       type="submit"
-                      disabled={!formData.delay}
-                      className="relative text-sm font-medium rounded-full h-12 p-1 ps-6 pe-14 group transition-all duration-500 hover:ps-14 hover:pe-6 w-fit overflow-hidden disabled:opacity-50 disabled:pointer-events-none"
+                      className="relative text-sm font-medium rounded-full h-12 p-1 ps-6 pe-14 group transition-all duration-500 hover:ps-14 hover:pe-6 w-fit overflow-hidden"
                     >
                       <span className="relative z-10 transition-all duration-500">
                         Collaborons
