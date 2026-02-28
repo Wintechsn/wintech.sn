@@ -6,8 +6,10 @@ import { ArrowUpRight } from "lucide-react";
 import { TextGenerateEffect } from "@/app/components/ui/text-generate-effect";
 import { Button } from "@/components/ui/button";
 import ShareArticle from "./ShareArticle";
+import CommentForm from "./CommentForm";
 
 type Article = {
+  postId: number;
   slug: string;
   image: string;
   title: string;
@@ -68,6 +70,7 @@ export default function BlogArticleContent({ article }: { article: Article }) {
                 dangerouslySetInnerHTML={{ __html: article.content }}
               />
               <ShareArticle title={article.title} slug={article.slug} />
+              <CommentForm postId={article.postId} articleTitle={article.title} />
             </div>
           </div>
         </div>

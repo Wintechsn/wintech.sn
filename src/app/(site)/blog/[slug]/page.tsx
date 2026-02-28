@@ -22,6 +22,7 @@ type Props = { params: Promise<{ slug: string }> };
 
 type WordPressPostResponse = {
   post: {
+    databaseId: number;
     slug: string;
     title: string;
     date: string;
@@ -50,6 +51,7 @@ async function getPostBySlug(slug: string) {
   const query = `
     query GetPostBySlug($slug: ID!) {
       post(id: $slug, idType: SLUG) {
+        databaseId
         slug
         title
         date
@@ -82,6 +84,7 @@ async function getPostBySlug(slug: string) {
   if (!data.post) return null;
 
   return {
+    postId: data.post.databaseId,
     slug: data.post.slug,
     image:
       data.post.featuredImage?.node?.sourceUrl ||
