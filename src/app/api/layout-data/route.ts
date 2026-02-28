@@ -44,8 +44,8 @@ const footerData = {
     otherPages: {
         name: "Mentions légales",
         links: [
-            { name: "Conditions générales", url: "/terms-and-conditions" },
-            { name: "Politique de confidentialité", url: "/privacy-policy" },
+            { name: "Conditions générales", url: "/conditions-generales" },
+            { name: "Politique de confidentialité", url: "/politique-de-confidentialite" },
         ]
     },
     contactDetails: {

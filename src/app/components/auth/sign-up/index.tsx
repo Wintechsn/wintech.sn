@@ -185,7 +185,7 @@ const SignUp = () => {
                   <p className="text-dark_black/70 dark:text-white/50">
                     En créant un compte, vous acceptez notre{" "}
                     <Link
-                      href="/privacy-policy"
+                      href="/politique-de-confidentialite"
                       className="text-dark_black dark:text-white dark:hover:text-white-50"
                     >
                       politique de confidentialité
