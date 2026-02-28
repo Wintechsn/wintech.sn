@@ -63,7 +63,7 @@ export default function CommentForm({ postId, articleTitle }: CommentFormProps) 
 
   if (submitted) {
     return (
-      <div className="flex flex-col items-center gap-5 text-center max-w-xl mx-auto p-6 rounded-2xl bg-green/20 dark:bg-white/5 border border-dark_black/10 dark:border-white/10">
+      <div className="mt-12 pt-10 flex flex-col items-center gap-5 text-center max-w-xl mx-auto p-6 rounded-2xl bg-green/20 dark:bg-white/5 border border-dark_black/10 dark:border-white/10">
         <div className="flex items-center gap-3">
           <Icon
             icon="ix:success-filled"

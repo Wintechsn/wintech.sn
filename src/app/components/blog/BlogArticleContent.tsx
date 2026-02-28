@@ -7,6 +7,8 @@ import { TextGenerateEffect } from "@/app/components/ui/text-generate-effect";
 import { Button } from "@/components/ui/button";
 import ShareArticle from "./ShareArticle";
 import CommentForm from "./CommentForm";
+import CommentList from "./CommentList";
+import type { ApprovedComment } from "./CommentList";
 
 type Article = {
   postId: number;
@@ -26,7 +28,12 @@ function splitTitle(title: string): [string, string] {
   return [words.slice(0, mid).join(" "), words.slice(mid).join(" ")];
 }
 
-export default function BlogArticleContent({ article }: { article: Article }) {
+type Props = {
+  article: Article;
+  comments?: ApprovedComment[];
+};
+
+export default function BlogArticleContent({ article, comments = [] }: Props) {
   const [titlePart1, titlePart2] = splitTitle(article.title);
 
   return (
@@ -70,6 +77,7 @@ export default function BlogArticleContent({ article }: { article: Article }) {
                 dangerouslySetInnerHTML={{ __html: article.content }}
               />
               <ShareArticle title={article.title} slug={article.slug} />
+              <CommentList comments={comments} />
               <CommentForm postId={article.postId} articleTitle={article.title} />
             </div>
           </div>

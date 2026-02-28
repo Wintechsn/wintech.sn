@@ -1,9 +1,44 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import BlogArticleContent from "@/app/components/blog/BlogArticleContent";
+import type { ApprovedComment } from "@/app/components/blog/CommentList";
 import { fetchFromWordPress } from "@/lib/wpClient";
 
-const WP_ORIGIN = "https://backend-wintech.lindor.dev";
+const WP_ORIGIN =
+  process.env.WORDPRESS_REST_URL ||
+  process.env.NEXT_PUBLIC_WORDPRESS_REST_URL ||
+  "https://backend-wintech.lindor.dev";
+
+async function getApprovedComments(postId: number): Promise<ApprovedComment[]> {
+  try {
+    const url = `${WP_ORIGIN.replace(/\/$/, "")}/wp-json/wp/v2/comments?post=${postId}&per_page=100&order=asc`;
+    const res = await fetch(url, {
+      next: { revalidate: 60 },
+    });
+    if (!res.ok) return [];
+    const data = await res.json();
+    if (!Array.isArray(data)) return [];
+    return data.map((c: { id: number; author_name: string; date: string; content?: { rendered?: string } }) => ({
+      id: c.id,
+      author_name: c.author_name || "Anonyme",
+      date: new Date(c.date).toLocaleDateString("fr-FR", {
+        day: "2-digit",
+        month: "long",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+      }),
+      content:
+        typeof c.content === "object" && c.content?.rendered
+          ? c.content.rendered
+          : typeof c.content === "string"
+            ? c.content
+            : "",
+    }));
+  } catch {
+    return [];
+  }
+}
 
 function ensureAbsoluteContentUrls(html: string): string {
   if (!html) return html;
@@ -147,9 +182,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function BlogArticlePage({ params }: Props) {
   const { slug } = await params;
   const article = await getPostBySlug(slug);
-
   if (!article) notFound();
 
-  return <BlogArticleContent article={article} />;
+  const comments = await getApprovedComments(article.postId);
+
+  return <BlogArticleContent article={article} comments={comments} />;
 }
 
