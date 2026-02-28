@@ -25,6 +25,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Brand from "@/app/components/home/brand";
+import CreativeMind from "@/app/components/home/creative-mind";
 
 const FAQ_APROPOS = [
   {
@@ -243,6 +244,9 @@ export default function AProposPage() {
           </div>
         </div>
       </section>
+
+      {/* Équipe */}
+      <CreativeMind showTitle={true} />
 
       {/* FAQ - même style que la page Contact */}
       <section>
