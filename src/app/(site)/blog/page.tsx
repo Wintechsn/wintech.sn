@@ -57,10 +57,10 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* Cartes d'actu */}
+      {/* Cartes d'actu - style réalisations, 2 par ligne */}
       <section ref={ref} className="2xl:py-20 py-11">
         <div className="container">
-          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-x-6 gap-y-8 w-full">
             {blogList.map((article: any, index: number) => (
               <motion.div key={article.slug} {...animation(index)}>
                 <BlogCard article={article} />

@@ -299,6 +299,7 @@ type WordPressProjectsResponse = {
     nodes: {
       title: string;
       lienVersLeProjet?: string | null;
+      afficherDansLaPageDaccueil?: boolean | null;
       categories?: {
         nodes?: { name: string }[];
       } | null;
@@ -317,6 +318,7 @@ async function getProjectsFromWordPress() {
     query GetAllProjects {
       projets {
         nodes {
+          afficherDansLaPageDaccueil
           title
           lienVersLeProjet
           categories {
@@ -345,6 +347,7 @@ async function getProjectsFromWordPress() {
     link: projet.lienVersLeProjet ?? undefined,
     tag:
       projet.categories?.nodes?.map((c) => c.name) ?? [],
+    afficherDansLaPageDaccueil: projet.afficherDansLaPageDaccueil === true,
   }));
 }
 
@@ -462,10 +465,13 @@ export const GET = async (request: Request) => {
     console.error("Error loading blog posts from WordPress:", error);
   }
 
+  let allProjectsList: OnlinePresenceItem[] = onlinePresenceList;
   try {
     const projects = await getProjectsFromWordPress();
     if (projects.length > 0) {
-      projectsList = projects;
+      const withFlag = projects as (OnlinePresenceItem & { afficherDansLaPageDaccueil?: boolean })[];
+      projectsList = withFlag.filter((p) => p.afficherDansLaPageDaccueil === true);
+      allProjectsList = projects.map(({ afficherDansLaPageDaccueil: _, ...rest }) => rest);
     }
   } catch (error) {
     console.error("Error loading projects from WordPress:", error);
@@ -476,6 +482,7 @@ export const GET = async (request: Request) => {
     brandList,
     innovationList,
     onlinePresenceList: projectsList,
+    allProjectsList,
     creativeMindList,
     WebResultTagList,
     statisticsCounter,

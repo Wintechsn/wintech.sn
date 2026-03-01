@@ -25,7 +25,7 @@ export default function RealisationsPage() {
           </div>
         </div>
       </section>
-      <OnlinePresence showTitle={false} />
+      <OnlinePresence showTitle={false} useAllProjects />
 
       {/* CTA bannière */}
       <section>

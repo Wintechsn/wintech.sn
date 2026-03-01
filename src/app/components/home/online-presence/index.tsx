@@ -6,10 +6,17 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "motion/react";
 import { TextGenerateEffect } from "@/app/components/ui/text-generate-effect";
 
-function OnlinePresence({ showTitle = true }: { showTitle?: boolean }) {
+function OnlinePresence({
+  showTitle = true,
+  useAllProjects = false,
+}: {
+  showTitle?: boolean;
+  /** Si true, affiche tous les projets (ex. page Réalisations). Si false, uniquement ceux avec afficherDansLaPageDaccueil (accueil). */
+  useAllProjects?: boolean;
+}) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
-  const [onlinePresenceList, setOnlinePresenceList] = useState<any>(null);
+  const [projectList, setProjectList] = useState<any>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,13 +25,15 @@ function OnlinePresence({ showTitle = true }: { showTitle?: boolean }) {
         if (!res.ok) throw new Error("Failed to fetch");
 
         const data = await res.json();
-        setOnlinePresenceList(data?.onlinePresenceList);
+        setProjectList(
+          useAllProjects ? data?.allProjectsList : data?.onlinePresenceList
+        );
       } catch (error) {
         console.error("Error fetching services:", error);
       }
     };
     fetchData();
-  }, []);
+  }, [useAllProjects]);
 
   const bottomAnimation = (index: number) => ({
     initial: { y: 50, opacity: 0 },
@@ -53,7 +62,7 @@ function OnlinePresence({ showTitle = true }: { showTitle?: boolean }) {
               </div>
             )}
             <div className="grid md:grid-cols-2 gap-x-6 gap-y-8 w-full">
-              {onlinePresenceList?.map((items: any, index: number) => (
+              {projectList?.map((items: any, index: number) => (
                 <motion.div
                   key={index}
                   className="group flex flex-col gap-6 cursor-pointer"
