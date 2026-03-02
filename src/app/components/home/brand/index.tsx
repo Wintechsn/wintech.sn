@@ -22,7 +22,7 @@ function Brand({ title = "Apprécié par plus de 100 marques à travers le monde
 
   return (
     <section>
-      <div className="pb-11 2xl:pb-10">
+      <div className="py-11 2xl:py-10">
         <div className="container">
           <div className="gap-4">
             <div className="flex justify-center text-center py-4 relative">
