@@ -24,7 +24,7 @@ const TEMOIGNAGES = [
       "« Un grand merci à Wintech pour la qualité du travail réalisé sur notre site web. Professionnalisme, écoute et implication ont permis une livraison rapide d’un site au top ! »",
     name: "Aminata SEYDI",
     role: "Fondatrice & CEO, SoubaTech",
-    image: "/images/home/customerStories/customer_bg_img.jpg",
+    image: "/images/home/customerStories/nata.jpg",
   },
 ];
 
