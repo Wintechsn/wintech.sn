@@ -10,20 +10,20 @@ const TEMOIGNAGES = [
       "« Merci beaucoup pour votre engagement. Cette nouvelle étape marque le début d'une aventure encore plus ambitieuse avec un site qui nous ressemble, enfin ! »",
     name: "Carmen Thiam",
     role: "Fondatrice de CT-consulting",
-    image: "/images/home/customerStories/customer_bg_img.jpeg",
+    image: "/images/home/customerStories/carmen.jpeg",
   },
   {
     quote:
-      "« Merci beaucoup pour votre engagement. Cette nouvelle étape marque le début d'une aventure encore plus ambitieuse avec un site qui nous ressemble, enfin ! »",
-    name: "Carmen Thiam",
-    role: "Fondatrice de CT-consulting",
-    image: "/images/home/customerStories/customer_bg_img.jpg",
+      "« Toujours un plaisir de collaborer avec Wintech. Leur professionnalisme et leur dévouement garantissent un travail digital de grande qualité. Merci pour ce service exceptionnel et innovant. »",
+    name: "Issa Ndiaye",
+    role: "CVO Ovindi",
+    image: "/images/home/customerStories/issandiaye.jpg",
   },
   {
     quote:
-      "« Merci beaucoup pour votre engagement. Cette nouvelle étape marque le début d'une aventure encore plus ambitieuse avec un site qui nous ressemble, enfin ! »",
-    name: "Carmen Thiam",
-    role: "Fondatrice de CT-consulting",
+      "« Un grand merci à Wintech pour la qualité du travail réalisé sur notre site web. Professionnalisme, écoute et implication ont permis une livraison rapide d’un site au top ! »",
+    name: "Aminata SEYDI",
+    role: "Fondatrice & CEO, SoubaTech",
     image: "/images/home/customerStories/customer_bg_img.jpg",
   },
 ];
