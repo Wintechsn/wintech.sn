@@ -191,8 +191,7 @@ function CustomerStories() {
                     Notre engagement
                     </span>
                     <h2 className="text-2xl lg:text-5xl text-dark_black dark:text-white">
-                      « Chez Wintech, nous créons plus qu’un site : un outil de croissance durable.
-                      Nos solutions headless allient rapidité, sécurité et évolutivité. »
+                      « Votre ambition mérite un site web à la hauteur de vos objectifs, conçu pour soutenir votre croissance et renforcer votre positionnement. »
                     </h2>
                   </div>
                   <div className="flex flex-col gap-1">

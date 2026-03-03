@@ -28,24 +28,45 @@ import Brand from "@/app/components/home/brand";
 
 const FAQ_APROPOS = [
   {
-    q: "Comment solliciter nos services chez Wintech ?",
-    a: "Vous pouvez nous contacter via le formulaire de contact, par email ou par téléphone. Nous étudions votre demande et vous recontactons pour un premier échange et un devis personnalisé.",
+    q: "Pourquoi investir dans un site web professionnel aujourd'hui ?",
+    a: "Un site web est bien plus qu'une vitrine digitale. C'est un levier stratégique qui renforce votre crédibilité, attire de nouveaux clients et soutient votre croissance à long terme.",
   },
   {
-    q: "En combien de temps un projet est-il livré ?",
-    a: "La durée varie selon la nature et l'envergure du projet (site vitrine, e-commerce, refonte…). Nous vous communiquons un planning réaliste dès l'analyse de vos besoins.",
+    q: "En quoi votre approche est-elle différente ?",
+    a: "Chez Wintech, nous ne créons pas simplement des sites web. Nous concevons des plateformes performantes, pensées pour convertir, évoluer et accompagner votre développement.",
   },
   {
-    q: "Proposez-vous des services de maintenance/support ?",
-    a: "Oui. Nous proposons des forfaits de maintenance et de support technique pour assurer la mise à jour, la sécurité et l'évolution de votre site dans le temps.",
+    q: "Combien de temps faut-il pour créer un site web ?",
+    a: "La durée dépend de la complexité du projet. En moyenne, un site vitrine prend entre 2 et 4 semaines, tandis qu'un projet plus avancé peut nécessiter 4 à 8 semaines.",
   },
   {
-    q: "Est-ce que vous accompagnez les débutants ou les jeunes entreprises ?",
-    a: "Absolument. Nous accompagnons aussi bien les startups que les PME et les grandes structures. Nous adaptons nos solutions et notre accompagnement à votre niveau et à vos objectifs.",
+    q: "Mon site sera-t-il optimisé pour le référencement (SEO) ?",
+    a: "Oui. Chaque site est conçu avec une structure optimisée pour le référencement afin d'améliorer votre visibilité sur Google et d'attirer un trafic qualifié.",
   },
   {
-    q: "Quels sont les modes de paiement disponibles ?",
-    a: "Nous acceptons les virements bancaires et d'autres modes de paiement adaptés au contexte local. Les modalités sont précisées dans nos propositions commerciales.",
+    q: "Le site sera-t-il sécurisé ?",
+    a: "Absolument. Nous mettons en place les meilleures pratiques en matière de sécurité afin de protéger vos données et celles de vos utilisateurs.",
+  },
+  {
+    q: "Pourrai-je modifier le contenu moi-même ?",
+    a: "Oui. Nous développons des sites faciles à administrer, vous permettant de gérer vos contenus de manière autonome si vous le souhaitez.",
+  },
+  {
+    q: "Mon site sera-t-il adapté aux mobiles ?",
+    a: "Bien sûr. Tous nos sites sont 100 % responsives et optimisés pour offrir une expérience fluide sur mobile, tablette et ordinateur.",
+  },
+  {
+    q: "Proposez-vous un accompagnement après la mise en ligne ?",
+    a: "Oui. Nous proposons des services de maintenance, mises à jour et accompagnement stratégique pour assurer la performance continue de votre site.",
+  },
+  {
+    q: "Combien coûte un site web ?",
+    a: "Le coût dépend de vos besoins spécifiques. Chaque projet est unique, c'est pourquoi nous proposons un devis personnalisé après analyse de vos objectifs.",
+  },
+  {
+    q: "Comment démarrer un projet avec Wintech ?",
+    a: "C'est simple. Contactez-nous via le formulaire ou planifiez un rendez-vous. Nous analyserons vos besoins et vous proposerons une solution adaptée à votre ambition.",
+    contactLink: true,
   },
 ];
 
@@ -275,7 +296,20 @@ export default function AProposPage() {
                       </AccordionTrigger>
                       <AccordionContent className="p-0 text-muted-foreground text-base">
                         <p className="text-base font-normal text-muted-foreground">
-                          {item.a}
+                          {"contactLink" in item && item.contactLink ? (
+                            <>
+                              C&apos;est simple.{" "}
+                              <Link
+                                href="/contact"
+                                className="underline font-medium text-foreground hover:opacity-80 transition-opacity"
+                              >
+                                Contactez-nous
+                              </Link>{" "}
+                              via le formulaire ou planifiez un rendez-vous. Nous analyserons vos besoins et vous proposerons une solution adaptée à votre ambition.
+                            </>
+                          ) : (
+                            item.a
+                          )}
                         </p>
                       </AccordionContent>
                     </AccordionItem>

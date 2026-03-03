@@ -234,34 +234,54 @@ const startupPlanList = [
 
 const faqList = [
   {
-    faq_que: "Quels services l'agence Awake propose-t-elle ?",
+    faq_que: "Pourquoi investir dans un site web professionnel aujourd'hui ?",
     faq_ans:
-      "Oui, nous assurons un accompagnement après lancement pour une mise en œuvre fluide et proposons des forfaits de maintenance pour les clients ayant besoin de mises à jour ou d'assistance technique régulières.",
+      "Un site web est bien plus qu'une vitrine digitale. C'est un levier stratégique qui renforce votre crédibilité, attire de nouveaux clients et soutient votre croissance à long terme.",
   },
   {
-    faq_que: "Combien de temps dure un projet type ?",
+    faq_que: "En quoi votre approche est-elle différente ?",
     faq_ans:
-      "Oui, nous assurons un accompagnement après lancement pour une mise en œuvre fluide et proposons des forfaits de maintenance pour les clients ayant besoin de mises à jour ou d'assistance technique régulières.",
+      "Chez Wintech, nous ne créons pas simplement des sites web. Nous concevons des plateformes performantes, pensées pour convertir, évoluer et accompagner votre développement.",
   },
   {
-    faq_que: "Comment sont structurés les tarifs chez Wintech ?",
+    faq_que: "Combien de temps faut-il pour créer un site web ?",
     faq_ans:
-      "Oui, nous assurons un accompagnement après lancement pour une mise en œuvre fluide et proposons des forfaits de maintenance pour les clients ayant besoin de mises à jour ou d'assistance technique régulières.",
+      "La durée dépend de la complexité du projet. En moyenne, un site vitrine prend entre 2 et 4 semaines, tandis qu'un projet plus avancé peut nécessiter 4 à 8 semaines.",
   },
   {
-    faq_que: "Proposez-vous un suivi après la livraison du projet ?",
+    faq_que: "Mon site sera-t-il optimisé pour le référencement (SEO) ?",
     faq_ans:
-      "Oui, nous assurons un accompagnement après lancement pour une mise en œuvre fluide et proposons des forfaits de maintenance pour les clients ayant besoin de mises à jour ou d'assistance technique régulières.",
+      "Oui. Chaque site est conçu avec une structure optimisée pour le référencement afin d'améliorer votre visibilité sur Google et d'attirer un trafic qualifié.",
   },
   {
-    faq_que: "À quelle fréquence reçois-je des nouvelles sur mon projet ?",
+    faq_que: "Le site sera-t-il sécurisé ?",
     faq_ans:
-      "Oui, nous assurons un accompagnement après lancement pour une mise en œuvre fluide et proposons des forfaits de maintenance pour les clients ayant besoin de mises à jour ou d'assistance technique régulières.",
+      "Absolument. Nous mettons en place les meilleures pratiques en matière de sécurité afin de protéger vos données et celles de vos utilisateurs.",
   },
   {
-    faq_que: "À quelle fréquence reçois-je des nouvelles sur mon projet ?",
+    faq_que: "Pourrai-je modifier le contenu moi-même ?",
     faq_ans:
-      "Oui, nous assurons un accompagnement après lancement pour une mise en œuvre fluide et proposons des forfaits de maintenance pour les clients ayant besoin de mises à jour ou d'assistance technique régulières.",
+      "Oui. Nous développons des sites faciles à administrer, vous permettant de gérer vos contenus de manière autonome si vous le souhaitez.",
+  },
+  {
+    faq_que: "Mon site sera-t-il adapté aux mobiles ?",
+    faq_ans:
+      "Bien sûr. Tous nos sites sont 100 % responsives et optimisés pour offrir une expérience fluide sur mobile, tablette et ordinateur.",
+  },
+  {
+    faq_que: "Proposez-vous un accompagnement après la mise en ligne ?",
+    faq_ans:
+      "Oui. Nous proposons des services de maintenance, mises à jour et accompagnement stratégique pour assurer la performance continue de votre site.",
+  },
+  {
+    faq_que: "Combien coûte un site web ?",
+    faq_ans:
+      "Le coût dépend de vos besoins spécifiques. Chaque projet est unique, c'est pourquoi nous proposons un devis personnalisé après analyse de vos objectifs.",
+  },
+  {
+    faq_que: "Comment démarrer un projet avec Wintech ?",
+    faq_ans:
+      "C'est simple. Contactez-nous via le formulaire ou planifiez un rendez-vous. Nous analyserons vos besoins et vous proposerons une solution adaptée à votre ambition.",
   },
 ];
 
