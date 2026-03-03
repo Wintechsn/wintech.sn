@@ -3,6 +3,7 @@ import Header from "./components/layout/header";
 import Footer from "./components/layout/footer/Footer";
 import Providers from "../providers/Provider";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Instrument_Serif, Inter_Tight } from "next/font/google";
 
 const instrumentSerif = Instrument_Serif({
@@ -38,6 +39,7 @@ export default function RootLayout({
           {children}
           <Footer />
           <Analytics />
+          <SpeedInsights />
         </Providers>
       </body>
     </html>
