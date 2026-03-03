@@ -2,6 +2,7 @@ import "./globals.css";
 import Header from "./components/layout/header";
 import Footer from "./components/layout/footer/Footer";
 import Providers from "../providers/Provider";
+import { Analytics } from "@vercel/analytics/next";
 import { Instrument_Serif, Inter_Tight } from "next/font/google";
 
 const instrumentSerif = Instrument_Serif({
@@ -36,6 +37,7 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
+          <Analytics />
         </Providers>
       </body>
     </html>
