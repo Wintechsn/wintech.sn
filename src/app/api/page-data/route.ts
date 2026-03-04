@@ -334,9 +334,11 @@ type WordPressProjectsResponse = {
 };
 
 async function getProjectsFromWordPress() {
+  /** Limite WPGraphQL : on demande jusqu'à 100 projets. */
+  const first = 100;
   const query = `
-    query GetAllProjects {
-      projets {
+    query GetAllProjects($first: Int) {
+      projets(first: $first) {
         nodes {
           afficherDansLaPageDaccueil
           title
@@ -357,7 +359,7 @@ async function getProjectsFromWordPress() {
     }
   `;
 
-  const data = await fetchFromWordPress<WordPressProjectsResponse>(query);
+  const data = await fetchFromWordPress<WordPressProjectsResponse>(query, { first });
   return data.projets.nodes.map((projet) => ({
     title: projet.title,
     image:
@@ -400,6 +402,7 @@ type WordPressPostsResponse = {
 };
 
 async function getBlogListFromWordPress(limit?: number) {
+  /** Limite WPGraphQL : on demande jusqu'à 100 articles par défaut. */
   const first = limit ?? 100;
   const query = `
     query GetAllPost($first: Int) {
