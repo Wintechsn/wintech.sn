@@ -53,7 +53,7 @@ export default function Home() {
       {/* ---------------------Innovation section Ends-----------------  */}
 
       {/* ---------------------Online presence section Starts-----------------  */}
-      <OnlinePresence />
+      <OnlinePresence limit={4} showViewMore />
       {/* ---------------------Online presence section Ends-----------------  */}
 
       {/* ---------------------Creative mind section Starts (masquée)-----------------  */}

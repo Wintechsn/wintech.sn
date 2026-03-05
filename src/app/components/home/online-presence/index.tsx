@@ -4,15 +4,23 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "motion/react";
+import { ArrowUpRight } from "lucide-react";
 import { TextGenerateEffect } from "@/app/components/ui/text-generate-effect";
+import { Button } from "@/components/ui/button";
 
 function OnlinePresence({
   showTitle = true,
   useAllProjects = false,
+  limit,
+  showViewMore = false,
 }: {
   showTitle?: boolean;
   /** Si true, affiche tous les projets (ex. page Réalisations). Si false, uniquement ceux avec afficherDansLaPageDaccueil (accueil). */
   useAllProjects?: boolean;
+  /** Limite le nombre de projets affichés (ex. 4 sur l'accueil). */
+  limit?: number;
+  /** Affiche un bouton "Voir plus" vers /realisations. */
+  showViewMore?: boolean;
 }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
@@ -62,7 +70,7 @@ function OnlinePresence({
               </div>
             )}
             <div className="grid md:grid-cols-2 gap-x-6 gap-y-8 w-full">
-              {projectList?.map((items: any, index: number) => (
+              {(limit ? projectList?.slice(0, limit) : projectList)?.map((items: any, index: number) => (
                 <motion.div
                   key={index}
                   className="group flex flex-col gap-6 cursor-pointer"
@@ -113,6 +121,27 @@ function OnlinePresence({
                 </motion.div>
               ))}
             </div>
+            {showViewMore && projectList && projectList.length > 0 && (
+              <motion.div
+                className="flex justify-center mt-6"
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.5, delay: 0.8 }}
+              >
+                <Button
+                  className="relative text-sm font-medium rounded-full h-12 p-1 ps-6 pe-14 group transition-all duration-500 hover:ps-14 hover:pe-6 w-fit overflow-hidden"
+                  nativeButton={false}
+                  render={<Link href="/realisations" />}
+                >
+                  <span className="relative z-10 transition-all duration-500">
+                    Voir plus de projets
+                  </span>
+                  <div className="absolute right-1 w-10 h-10 bg-background text-foreground rounded-full flex items-center justify-center transition-all duration-500 group-hover:right-[calc(100%-44px)] group-hover:rotate-45">
+                    <ArrowUpRight size={16} />
+                  </div>
+                </Button>
+              </motion.div>
+            )}
           </div>
         </div>
       </div>
