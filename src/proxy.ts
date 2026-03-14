@@ -3,27 +3,47 @@ import type { NextRequest } from 'next/server'
 import { getToken } from 'next-auth/jwt'
 
 /**
- * Redirection des anciennes URLs d'articles blog (avec catégorie) vers /blog/[slug].
- * Ex. /performance/seo-au-senegal → /blog/seo-au-senegal
+ * Routes du site (premier segment). On ne redirige pas ces URLs.
+ * Redirection /category/slug → /blog/slug uniquement si le slug correspond à un article existant.
  */
-const BLOG_CATEGORY_SLUGS = new Set([
-    'performance',
-    'actualites',
-    'news',
-    'guides',
-    'conseils',
-    'tendances',
+const FIRST_SEGMENT_APP_ROUTES = new Set([
+    'blog',
+    'contact',
+    'a-propos',
+    'realisations',
+    'conditions-generales',
+    'politique-de-confidentialite',
+    'privacy-policy',
+    'terms-and-conditions',
+    'documentation',
+    'signin',
+    'signup',
+    'forgot-password',
 ])
 
 export async function proxy(request: NextRequest) {
     const url = request.nextUrl
     const segments = url.pathname.split('/').filter(Boolean)
 
-    // Redirection anciennes URLs blog : /category/slug → /blog/slug
-    if (segments.length === 2 && BLOG_CATEGORY_SLUGS.has(segments[0])) {
-        const newUrl = request.nextUrl.clone()
-        newUrl.pathname = `/blog/${segments[1]}`
-        return NextResponse.redirect(newUrl, 301)
+    // Anciennes URLs blog : /category/slug → /blog/slug seulement si le slug existe
+    if (
+        segments.length === 2 &&
+        !FIRST_SEGMENT_APP_ROUTES.has(segments[0])
+    ) {
+        const slug = segments[1]
+        const origin = new URL(request.url).origin
+        try {
+            const res = await fetch(
+                `${origin}/api/blog-slug-exists?slug=${encodeURIComponent(slug)}`
+            )
+            if (res.ok) {
+                const newUrl = request.nextUrl.clone()
+                newUrl.pathname = `/blog/${slug}`
+                return NextResponse.redirect(newUrl, 301)
+            }
+        } catch {
+            // en cas d'erreur, ne pas rediriger
+        }
     }
 
     const token = await getToken({ req: request })
