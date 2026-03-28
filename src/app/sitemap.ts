@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { fetchFromWordPress } from "@/lib/wpClient";
-import { getSiteUrl } from "@/lib/siteUrl";
+import { getResolvedSiteUrl } from "@/lib/siteUrl";
 
 export const revalidate = 3600;
 
@@ -22,7 +22,9 @@ type PostsForSitemapResponse = {
   };
 };
 
-async function getPostEntriesForSitemap(): Promise<MetadataRoute.Sitemap> {
+async function getPostEntriesForSitemap(
+  base: string,
+): Promise<MetadataRoute.Sitemap> {
   const first = 100;
   const query = `
     query GetPostsForSitemap($first: Int) {
@@ -37,7 +39,6 @@ async function getPostEntriesForSitemap(): Promise<MetadataRoute.Sitemap> {
 
   try {
     const data = await fetchFromWordPress<PostsForSitemapResponse>(query, { first });
-    const base = getSiteUrl();
     return data.posts.nodes.map((post) => {
       const lastModified = post.date ? new Date(post.date) : new Date();
       return {
@@ -53,7 +54,7 @@ async function getPostEntriesForSitemap(): Promise<MetadataRoute.Sitemap> {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const base = getSiteUrl();
+  const base = await getResolvedSiteUrl();
 
   const staticEntries: MetadataRoute.Sitemap = STATIC_PATHS.map(({ path, changeFrequency, priority }) => ({
     url: `${base}${path}`,
@@ -61,7 +62,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority,
   }));
 
-  const blogPosts = await getPostEntriesForSitemap();
+  const blogPosts = await getPostEntriesForSitemap(base);
 
   return [...staticEntries, ...blogPosts];
 }

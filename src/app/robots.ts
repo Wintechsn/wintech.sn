@@ -1,16 +1,16 @@
 import type { MetadataRoute } from "next";
-import { getSiteUrl } from "@/lib/siteUrl";
+import { getResolvedSiteUrl } from "@/lib/siteUrl";
 
 const NO_INDEX_PATHS = [
   "/documentation",
   "/signin",
   "/signup",
   "/forgot-password",
-  "/sevice"
+  "/service",
 ];
 
-export default function robots(): MetadataRoute.Robots {
-  const base = getSiteUrl();
+export default async function robots(): Promise<MetadataRoute.Robots> {
+  const base = await getResolvedSiteUrl();
   return {
     rules: {
       userAgent: "*",
