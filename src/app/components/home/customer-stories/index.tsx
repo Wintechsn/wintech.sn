@@ -74,54 +74,70 @@ function CustomerStories() {
                   initial={{ x: -100, y: -100, opacity: 0 }}
                   animate={topLeftInView ? { x: 0, y: 0, opacity: 1 } : {}}
                   transition={{ duration: 0.8 }}
-                  className="p-8 gap-64 rounded-2xl flex flex-col relative object-cover bg-center h-full min-w-0 w-full xl:col-span-3 bg-cover bg-no-repeat overflow-hidden"
+                  className="p-8 rounded-2xl flex flex-col relative min-h-[calc(22rem+50px)] md:min-h-[calc(26rem+50px)] xl:min-h-[calc(28rem+50px)] min-w-0 w-full xl:col-span-3 bg-cover bg-center bg-no-repeat overflow-hidden"
                   style={{
                     backgroundImage: `url(${TEMOIGNAGES[activeIndex].image})`,
                   }}
                 >
-                  <div className="flex flex-row justify-between items-center w-full gap-4">
-                    <span className="text-white/60 uppercase text-sm font-medium shrink-0">
-                      Témoignages clients
-                    </span>
-                    <div className="flex gap-2 shrink-0">
-                      {TEMOIGNAGES.map((_, i) => (
-                        <button
-                          key={i}
-                          type="button"
-                          aria-label={`Témoignage ${i + 1}`}
-                          onClick={() => setActiveIndex(i)}
-                          className={`h-1.5 rounded-full transition-all duration-300 ${
-                            i === activeIndex
-                              ? "bg-white w-6"
-                              : "bg-white/40 w-1.5 hover:bg-white/60"
-                          }`}
-                        />
-                      ))}
+                  <div
+                    className="absolute inset-0 bg-black/50 pointer-events-none"
+                    aria-hidden
+                  />
+                  <div className="relative z-10 flex flex-col flex-1 min-h-0">
+                    <div className="flex flex-row justify-between items-center w-full gap-4 shrink-0">
+                      <span className="text-white/60 uppercase text-sm font-medium shrink-0">
+                        Témoignages clients
+                      </span>
+                      <div className="flex gap-2 shrink-0">
+                        {TEMOIGNAGES.map((_, i) => (
+                          <button
+                            key={i}
+                            type="button"
+                            aria-label={`Témoignage ${i + 1}`}
+                            onClick={() => setActiveIndex(i)}
+                            className={`h-1.5 rounded-full transition-all duration-300 ${
+                              i === activeIndex
+                                ? "bg-white w-6"
+                                : "bg-white/40 w-1.5 hover:bg-white/60"
+                            }`}
+                          />
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                  <div className="flex flex-col gap-6">
-                    <AnimatePresence mode="wait" initial={false}>
-                      <motion.div
-                        key={activeIndex}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.6 }}
-                        className="flex flex-col gap-6"
-                      >
-                        <h4 className="text-white text-sm md:text-2xl">
+                    <div className="flex-1 min-h-0" aria-hidden />
+                    <div className="shrink-0 mt-auto flex flex-col gap-4">
+                      <AnimatePresence mode="wait" initial={false}>
+                        <motion.h4
+                          key={`quote-${activeIndex}`}
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.6 }}
+                          className="text-white text-sm md:text-2xl font-normal"
+                        >
                           {TEMOIGNAGES[activeIndex].quote}
-                        </h4>
-                        <div className="flex flex-col gap-1">
-                          <p className="text-white font-medium">
-                            {TEMOIGNAGES[activeIndex].name}
-                          </p>
-                          <p className="text-white/60 text-sm font-medium">
-                            {TEMOIGNAGES[activeIndex].role}
-                          </p>
-                        </div>
-                      </motion.div>
-                    </AnimatePresence>
+                        </motion.h4>
+                      </AnimatePresence>
+                      <div className="border-t border-white/15 pt-4">
+                        <AnimatePresence mode="wait" initial={false}>
+                          <motion.div
+                            key={`author-${activeIndex}`}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.35 }}
+                            className="flex flex-col gap-1"
+                          >
+                            <p className="text-white font-medium">
+                              {TEMOIGNAGES[activeIndex].name}
+                            </p>
+                            <p className="text-white/60 text-sm font-medium">
+                              {TEMOIGNAGES[activeIndex].role}
+                            </p>
+                          </motion.div>
+                        </AnimatePresence>
+                      </div>
+                    </div>
                   </div>
                 </motion.div>
 
