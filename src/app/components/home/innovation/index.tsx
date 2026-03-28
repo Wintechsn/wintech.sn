@@ -62,7 +62,7 @@ function Innovation({ showTitle = true }: { showTitle?: boolean }) {
     transition: { duration: 0.3, delay: 0.3 + index * 0.3 },
   });
   return (
-    <section id="services">
+    <section id="expertise">
       <div ref={ref} className="2xl:py-20 py-11">
         <div className="container">
           <div className="flex flex-col gap-12">

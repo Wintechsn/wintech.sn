@@ -3,8 +3,8 @@ import type { NextRequest } from 'next/server'
 import { getToken } from 'next-auth/jwt'
 
 /**
- * Routes du site (premier segment). On ne redirige pas ces URLs.
- * Redirection /category/slug → /blog/slug uniquement si le slug correspond à un article existant.
+ * Premier segment d’URL : routes du site Next + anciennes routes WordPress à ne pas traiter
+ * comme /[catégorie]/[slug] d’article (author, tag, category, feeds, etc.).
  */
 const FIRST_SEGMENT_APP_ROUTES = new Set([
     'blog',
@@ -19,6 +19,20 @@ const FIRST_SEGMENT_APP_ROUTES = new Set([
     'signin',
     'signup',
     'forgot-password',
+    // Ancien WordPress (évite fausses redirections vers /blog/[slug])
+    'author',
+    'category',
+    'tag',
+    'feed',
+    'portfolio-tags',
+    'page',
+    'wp-admin',
+    'wp-content',
+    'wp-json',
+    'wp-includes',
+    'rss',
+    'comments',
+    'search',
 ])
 
 export async function proxy(request: NextRequest) {

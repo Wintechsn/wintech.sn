@@ -6,6 +6,7 @@ import { QuickStart } from '@/app/components/documentation/QuickStart'
 import { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Documentation | Agence Wintech',
+  robots: { index: false, follow: false },
 }
 
 export default function Page() {

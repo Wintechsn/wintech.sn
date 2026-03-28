@@ -4,6 +4,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Forgot Password | Wintech",
+  robots: { index: false, follow: false },
 };
 
 const ForgotPasswordPage = () => {
