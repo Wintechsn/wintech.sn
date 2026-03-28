@@ -67,15 +67,14 @@ function CustomerStories() {
               </h2>
             </div>
 
-            <div className="flex flex-col gap-6">
-              <div className="flex flex-col xl:flex xl:flex-row gap-6">
-                {/* Top Left Box - 3 témoignages en fondu */}
+            <div className="grid grid-cols-1 xl:grid-cols-4 gap-6 min-w-0">
+                {/* Top Left — 75 % (3 colonnes) : témoignages */}
                 <motion.div
                   ref={topLeftRef}
                   initial={{ x: -100, y: -100, opacity: 0 }}
                   animate={topLeftInView ? { x: 0, y: 0, opacity: 1 } : {}}
                   transition={{ duration: 0.8 }}
-                  className="p-8 gap-64 rounded-2xl flex flex-col relative object-cover bg-center h-full w-full bg-cover bg-no-repeat overflow-hidden"
+                  className="p-8 gap-64 rounded-2xl flex flex-col relative object-cover bg-center h-full min-w-0 w-full xl:col-span-3 bg-cover bg-no-repeat overflow-hidden"
                   style={{
                     backgroundImage: `url(${TEMOIGNAGES[activeIndex].image})`,
                   }}
@@ -126,13 +125,13 @@ function CustomerStories() {
                   </div>
                 </motion.div>
 
-                {/* Top Right Box */}
+                {/* Top Right — 25 % (1 colonne) : chiffres clés */}
                 <motion.div
                   ref={topRightRef}
                   initial={{ x: 100, y: -100, opacity: 0 }}
                   animate={topRightInView ? { x: 0, y: 0, opacity: 1 } : {}}
                   transition={{ duration: 0.8 }}
-                  className="flex flex-col justify-between gap-36 xl:max-w-25 bg-pale-yellow rounded-2xl p-8"
+                  className="flex flex-col justify-between gap-36 bg-pale-yellow rounded-2xl p-8 min-w-0 w-full xl:col-span-1"
                 >
                   <div>
                     <span className="uppercase text-sm font-medium text-dark_black/60">
@@ -148,16 +147,14 @@ function CustomerStories() {
                     </h3>
                   </div>
                 </motion.div>
-              </div>
 
-              <div className="flex flex-col xl:flex xl:flex-row gap-6">
-                {/* Bottom Left Box */}
+                {/* Bottom Left — 25 % (1 colonne) : vision */}
                 <motion.div
                   ref={bottomLeftRef}
                   initial={{ x: -100, y: 100, opacity: 0 }}
                   animate={bottomLeftInView ? { x: 0, y: 0, opacity: 1 } : {}}
                   transition={{ duration: 0.8 }}
-                  className="flex flex-col justify-between bg-dark_black xl:max-w-25 dark:bg-white/10 rounded-2xl p-8"
+                  className="flex flex-col justify-between bg-dark_black min-w-0 w-full xl:col-span-1 dark:bg-white/10 rounded-2xl p-8"
                 >
                   <div className="flex flex-col gap-6">
                     <span className="text-white/60 uppercase text-sm font-medium">
@@ -168,7 +165,7 @@ function CustomerStories() {
                     </h3>
                     <div>
                       <Image
-                        src="/images/home/customerStories/creativity_img.jpg"
+                        src="/images/home/customerStories/creativity_img_new.jpg"
                         alt="image"
                         width={344}
                         height={220}
@@ -178,13 +175,13 @@ function CustomerStories() {
                   </div>
                 </motion.div>
 
-                {/* Bottom Right Box */}
+                {/* Bottom Right — 75 % (3 colonnes) : engagement */}
                 <motion.div
                   ref={bottomRightRef}
                   initial={{ x: 100, y: 100, opacity: 0 }}
                   animate={bottomRightInView ? { x: 0, y: 0, opacity: 1 } : {}}
                   transition={{ duration: 0.8 }}
-                  className="flex flex-col gap-24 justify-between bg-dark_black/5 dark:bg-white/5 p-8 rounded-2xl"
+                  className="flex flex-col gap-24 justify-between bg-dark_black/5 dark:bg-white/5 p-8 rounded-2xl min-w-0 w-full xl:col-span-3"
                 >
                   <div className="flex flex-col gap-6">
                     <span className="text-dark_black/60 dark:text-white/60 uppercase text-sm font-medium">
@@ -201,7 +198,6 @@ function CustomerStories() {
                     </p>
                   </div>
                 </motion.div>
-              </div>
             </div>
           </div>
         </div>
