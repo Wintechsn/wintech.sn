@@ -80,7 +80,7 @@ function CustomerStories() {
                   }}
                 >
                   <div
-                    className="absolute inset-0 bg-black/50 pointer-events-none"
+                    className="absolute inset-0 bg-black/40 pointer-events-none"
                     aria-hidden
                   />
                   <div className="relative z-10 flex flex-col flex-1 min-h-0">
