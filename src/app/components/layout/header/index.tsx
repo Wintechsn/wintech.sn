@@ -132,7 +132,7 @@ const Header = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:opacity-70 transition-opacity"
-                    aria-label={item.link}
+                    aria-label={item.ariaLabel ?? item.link}
                   >
                     <Image
                       src={item.icon}

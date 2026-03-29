@@ -35,19 +35,20 @@ const Footer = () => {
                     key={index}
                     href={item.link}
                     target='_blank'
+                    rel='noopener noreferrer'
+                    aria-label={item.ariaLabel ?? item.link}
                     className='hover:opacity-60'>
                     <Image
-                      key={index}
                       src={item.icon}
                       className='dark:hidden'
-                      alt='social-icon'
+                      alt=''
                       height={20}
                       width={20}
                     />
                     <Image
                       src={item.dark_icon}
                       className='dark:block hidden'
-                      alt='social-icon'
+                      alt=''
                       height={20}
                       width={20}
                     />

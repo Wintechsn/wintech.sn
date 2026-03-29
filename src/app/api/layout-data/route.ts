@@ -18,17 +18,20 @@ const footerData = {
             {
                 icon: "/images/home/footerSocialIcon/linkedin.svg",
                 dark_icon: "/images/home/footerSocialIcon/linkedin_dark.svg",
-                link: "https://www.linkedin.com/company/wintechsn"
+                link: "https://www.linkedin.com/company/wintechsn",
+                ariaLabel: "Wintech sur LinkedIn (nouvel onglet)"
             },
             {
                 icon: "/images/home/footerSocialIcon/instagram.svg",
                 dark_icon: "/images/home/footerSocialIcon/instagram_dark.svg",
-                link: "https://www.instagram.com/wintech.sn"
+                link: "https://www.instagram.com/wintech.sn",
+                ariaLabel: "Wintech sur Instagram (nouvel onglet)"
             },
             {
                 icon: "/images/home/footerSocialIcon/facebook.svg",
                 dark_icon: "/images/home/footerSocialIcon/facebook_dark.svg",
-                link: "https://www.facebook.com/wintech.sn"
+                link: "https://www.facebook.com/wintech.sn",
+                ariaLabel: "Wintech sur Facebook (nouvel onglet)"
             }
         ]
     },
