@@ -4,7 +4,6 @@ const headerData = [
     { label: 'Accueil', href: '/' },
     { label: 'À propos', href: '/a-propos' },
     { label: 'Réalisations', href: '/realisations' },
-    // { label: 'Équipe', href: '/#team' },
     // { label: 'Tarifs', href: '/#pricing' },
     { label: 'Blog', href: '/blog' },
     { label: 'Contact', href: '/contact' },

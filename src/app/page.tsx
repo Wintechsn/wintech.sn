@@ -6,7 +6,6 @@ const Brand = dynamic(() => import("./components/home/brand"), { ssr: true });
 const WebResult = dynamic(() => import("./components/home/web-result"), { ssr: true });
 const Innovation = dynamic(() => import("./components/home/innovation"), { ssr: true });
 const OnlinePresence = dynamic(() => import("./components/home/online-presence"), { ssr: true });
-const CreativeMind = dynamic(() => import("./components/home/creative-mind"), { ssr: true });
 const CustomerStories = dynamic(() => import("./components/home/customer-stories"), { ssr: true });
 const Subscription = dynamic(() => import("./components/home/subscription"), { ssr: true });
 const Blog = dynamic(() => import("./components/home/blog"), { ssr: true });
@@ -55,12 +54,6 @@ export default function Home() {
       {/* ---------------------Online presence section Starts-----------------  */}
       <OnlinePresence limit={4} showViewMore />
       {/* ---------------------Online presence section Ends-----------------  */}
-
-      {/* ---------------------Creative mind section Starts (masquée)-----------------  */}
-      <div className="hidden" aria-hidden>
-        <CreativeMind />
-      </div>
-      {/* ---------------------Creative mind section Ends-----------------  */}
 
       {/* ---------------------Customer Stories section Starts-----------------  */}
       <CustomerStories />

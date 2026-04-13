@@ -5,6 +5,9 @@ import Providers from "../providers/Provider";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Instrument_Serif, Inter_Tight } from "next/font/google";
+import Script from "next/script";
+
+const GA_MEASUREMENT_ID = "G-YD266BBLGR";
 
 const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
@@ -34,6 +37,18 @@ export default function RootLayout({
     >
       <link rel="icon" href="/favicon.ico" sizes="any" />
       <body className="antialiased font-inter-tight overflow-x-hidden min-w-0" suppressHydrationWarning>
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}');
+          `}
+        </Script>
         <Providers>
           <Header />
           {children}

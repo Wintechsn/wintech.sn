@@ -129,37 +129,6 @@ const onlinePresenceList = [
   },
 ];
 
-const creativeMindList = [
-  {
-    image: "/images/home/creative/creative_img_1.png",
-    name: "Logan Dang",
-    position: "Développeur WordPress",
-    twitterLink: "https://x.com/",
-    linkedinLink: "https://in.linkedin.com/",
-  },
-  {
-    image: "/images/home/creative/creative_img_2.png",
-    name: "Ana Belić",
-    position: "Spécialiste réseaux sociaux",
-    twitterLink: "https://x.com/",
-    linkedinLink: "https://in.linkedin.com/",
-  },
-  {
-    image: "/images/home/creative/creative_img_3.png",
-    name: "Brian Hanley",
-    position: "Designer produit",
-    twitterLink: "https://x.com/",
-    linkedinLink: "https://in.linkedin.com/",
-  },
-  {
-    image: "/images/home/creative/creative_img_4.png",
-    name: "Darko Stanković",
-    position: "Designer UI",
-    twitterLink: "https://x.com/",
-    linkedinLink: "https://in.linkedin.com/",
-  },
-];
-
 const WebResultTagList = [
   {
     icon: "WandSparkles",
@@ -506,7 +475,6 @@ export const GET = async (request: Request) => {
     innovationList,
     onlinePresenceList: projectsList,
     allProjectsList,
-    creativeMindList,
     WebResultTagList,
     statisticsCounter,
     startupPlanList,
