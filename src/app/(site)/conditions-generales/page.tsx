@@ -10,7 +10,7 @@ const COORDONNEES = {
   nom: "Wintech",
   adresse: "Dakar, Sénégal",
   email: "Contact@wintech.sn",
-  telephone: "+221 77 589 3076",
+  telephone: "+221 78 824 1616",
 };
 
 export default function Page() {

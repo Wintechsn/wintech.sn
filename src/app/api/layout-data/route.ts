@@ -54,7 +54,7 @@ const footerData = {
         name:"Coordonnées",
         address: "Dakar, Sénégal",
         email: "Contact@wintech.sn",
-        phone: "+221 77 589 3076"
+        phone: "+221 78 824 1616"
     },
     copyright: "©2026 Wintech. Tous droits réservés."
 };
