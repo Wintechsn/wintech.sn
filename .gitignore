@@ -23,6 +23,7 @@
 # misc
 .DS_Store
 *.pem
+/Mobile
 
 # debug
 npm-debug.log*
